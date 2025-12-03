@@ -1,11 +1,13 @@
 import { useState, type FormEvent } from "react";
 import { Link } from "react-router-dom";
+import { supabase } from "../supabaseClient";
 import Button from "../components/UI/Button";
 import {
   FaUser,
   FaEnvelope,
   FaRocket,
   FaCheckCircle,
+  FaExclamationCircle,
 } from "react-icons/fa";
 
 const benefits = [
@@ -19,12 +21,27 @@ export default function CourseFinder() {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    console.log("Registration attempt:", { name, email });
-    if (name && email) {
+    setLoading(true);
+    setError(null);
+
+    try {
+      const { error: supabaseError } = await supabase
+        .from("registrations")
+        .insert([{ full_name: name, email: email }]);
+
+      if (supabaseError) throw supabaseError;
+
       setSubmitted(true);
+    } catch (err: any) {
+      console.error("Registration error:", err);
+      setError("Something went wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -111,13 +128,22 @@ export default function CourseFinder() {
                       />
                     </div>
                   </div>
+
+                  {error && (
+                    <div className="flex items-center gap-2 text-red-400 text-sm mt-2">
+                      <FaExclamationCircle />
+                      <span>{error}</span>
+                    </div>
+                  )}
+
                   <Button
                     type="submit"
                     variant="primary"
                     size="lg"
                     className="mt-4 w-full"
+                    disabled={loading}
                   >
-                    <span>Register Now</span>
+                    {loading ? "Sending..." : "Register Now"}
                   </Button>
                 </form>
               </div>

@@ -1,5 +1,5 @@
 import { Routes, Route } from "react-router-dom";
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
@@ -9,12 +9,13 @@ import ScrollToTop from "./components/ScrollToTop";
 
 const LazyCourseFinder = lazy(() => import("./pages/CourseFinder"));
 const LazyCourseDetails = lazy(() => import("./pages/CourseDetails"));
-
 const LazyAboutInstructor = lazy(() => import("./components/AboutInstructor"));
 
 const PageLoadingFallback = () => (
   <div className="flex min-h-[80vh] items-center justify-center">
-    <p className="text-2xl text-neonBlue font-orbitron">Loading Page...</p>
+    <p className="text-2xl text-neonBlue font-orbitron animate-pulse">
+      Loading...
+    </p>
   </div>
 );
 
@@ -36,6 +37,33 @@ const MainPageLayout = () => (
 );
 
 function App() {
+  useEffect(() => {
+    const titleStyle = [
+      "color: #00F0FF",
+      "background: #0A0A0F",
+      "font-size: 20px",
+      "padding: 10px",
+      "border: 2px solid #00F0FF",
+      "border-radius: 5px",
+      "font-family: Orbitron, sans-serif",
+      "text-shadow: 0 0 10px #00F0FF",
+    ].join(";");
+
+    const warningStyle = [
+      "color: #E0E0E0",
+      "font-size: 14px",
+      "font-family: monospace",
+      "margin-top: 10px",
+    ].join(";");
+
+    console.clear();
+    console.log("%cDeveloped by Mariam Bukhaidze | MB Dev Academy", titleStyle);
+    console.log(
+      "%c⚠️ This code is the intellectual property of Mariam Bukhaidze.\nIf you see this in another portfolio, it has been stolen.\nContact: mariebukhaidze@gmail.com",
+      warningStyle
+    );
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0A0A0F] text-white">
       <ScrollToTop />
