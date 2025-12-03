@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { academyData } from "../data/academyData";
-import { FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaGithub, FaEnvelope, FaSpinner, FaCheck } from "react-icons/fa";
+import { supabase } from "../supabaseClient"; 
 import Button from "./UI/Button";
 
 const navLinks = [
@@ -12,6 +13,9 @@ const navLinks = [
 export default function Footer() {
   const { instructor } = academyData;
   const [email, setEmail] = useState("");
+  const [status, setStatus] = useState<
+    "idle" | "loading" | "success" | "error"
+  >("idle");
 
   const scrollToSection = (
     e: React.MouseEvent<HTMLAnchorElement>,
@@ -23,11 +27,36 @@ export default function Footer() {
       ?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!email) return;
-    alert(`Thank you for subscribing, ${email}!`);
-    setEmail("");
+
+    setStatus("loading");
+
+    try {
+      const { error } = await supabase
+        .from("subscribers")
+        .insert([{ email: email }]);
+
+      if (error) {
+        if (error.code === "23505") {
+          alert("This email is already subscribed!");
+          setStatus("idle");
+        } else {
+          throw error;
+        }
+        return;
+      }
+
+      setStatus("success");
+      setEmail(""); 
+
+      setTimeout(() => setStatus("idle"), 3000);
+    } catch (err) {
+      console.error("Subscription error:", err);
+      setStatus("error");
+      setTimeout(() => setStatus("idle"), 3000);
+    }
   };
 
   return (
@@ -56,15 +85,24 @@ export default function Footer() {
             onChange={(e) => setEmail(e.target.value)}
             placeholder="your.email@example.com"
             required
-            className="flex-grow min-w-0 px-4 py-3 rounded-md bg-white/5 text-white text-base border border-white/10 focus:outline-none focus:ring-2 focus:ring-neonBlue/80 backdrop-blur-sm transition"
+            disabled={status === "loading" || status === "success"}
+            className="flex-grow min-w-0 px-4 py-3 rounded-md bg-white/5 text-white text-base border border-white/10 focus:outline-none focus:ring-2 focus:ring-neonBlue/80 backdrop-blur-sm transition disabled:opacity-50"
           />
           <Button
             type="submit"
             variant="glass"
             size="lg"
-            className="!rounded-md"
+            className="!rounded-md min-w-[140px] flex justify-center items-center"
+            disabled={status === "loading" || status === "success"}
           >
-            Subscribe
+            {status === "idle" && "Subscribe"}
+            {status === "loading" && <FaSpinner className="animate-spin" />}
+            {status === "success" && (
+              <span className="flex items-center gap-2">
+                <FaCheck /> Done
+              </span>
+            )}
+            {status === "error" && "Error"}
           </Button>
         </form>
       </div>
