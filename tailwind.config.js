@@ -11,7 +11,8 @@ export default {
         cardBg: "rgba(255, 255, 255, 0.03)",
       },
       fontFamily: {
-        orbitron: ["Orbitron", "sans-serif"],
+        orbitron: ["Orbitron", "sans-serif"], // Для заголовков
+        body: ["Inter", "sans-serif"], // Для текста
       },
       boxShadow: {
         "neon-blue":

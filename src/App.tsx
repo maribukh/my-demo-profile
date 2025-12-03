@@ -7,6 +7,7 @@ import CoursesList from "./components/CoursesList";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import TechTicker from "./components/TechTicker";
+import NotFound from "./pages/NotFound"; 
 
 const LazyCourseFinder = lazy(() => import("./pages/CourseFinder"));
 const LazyCourseDetails = lazy(() => import("./pages/CourseDetails"));
@@ -78,6 +79,7 @@ function App() {
             <Route path="/course-finder" element={<LazyCourseFinder />} />
             <Route path="/course/:id" element={<LazyCourseDetails />} />
             <Route path="/services" element={<LazyServices />} />
+            <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>
       </main>

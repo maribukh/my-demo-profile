@@ -1,7 +1,10 @@
 import type React from "react";
 import Button from "./UI/Button.tsx";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Hero() {
+  const { t } = useLanguage();
+
   const scrollToCourses = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     document.getElementById("courses")?.scrollIntoView({ behavior: "smooth" });
@@ -18,12 +21,11 @@ export default function Hero() {
 
       <div className="max-w-4xl z-10 relative flex flex-col items-center">
         <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-widest text-white font-orbitron drop-shadow-[0_0_15px_rgba(0,240,255,0.3)] leading-tight mt-4">
-          Become the Front-End Developer of the Future
+          {t.hero.title}
         </h1>
 
         <p className="mt-6 text-sm md:text-lg text-[#E0E0E0]/80 max-w-xl mx-auto px-2">
-          Interactive courses on React and TypeScript from a practicing expert.
-          Master the stack that powers the modern web.
+          {t.hero.subtitle}
         </p>
 
         <div className="mt-8 md:mt-10 flex flex-col w-full sm:w-auto sm:flex-row justify-center gap-4 px-4">
@@ -33,7 +35,7 @@ export default function Hero() {
             onClick={scrollToCourses}
             className="w-full sm:w-auto"
           >
-            View All Courses
+            {t.hero.btnCourses}
           </Button>
 
           <Button
@@ -42,7 +44,7 @@ export default function Hero() {
             onClick={scrollToInstructor}
             className="w-full sm:w-auto"
           >
-            Meet the Instructor
+            {t.hero.btnInstructor}
           </Button>
         </div>
       </div>

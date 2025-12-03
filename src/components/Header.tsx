@@ -1,19 +1,23 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-
-const nav = [
-  { href: "#courses", label: "Courses" },
-  { href: "/services", label: "Services" },
-  { href: "#about", label: "About Instructor" },
-  { href: "#contacts", label: "Contacts" },
-];
+import LanguageSwitcher from "./LanguageSwitcher"; 
+import { useLanguage } from "../context/LanguageContext"; 
 
 export default function Header() {
   const navigate = useNavigate();
   const location = useLocation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
+
+  const { t } = useLanguage(); 
+
+  const nav = [
+    { href: "#courses", label: t.nav.courses },
+    { href: "/services", label: t.nav.services },
+    { href: "#about", label: t.nav.about },
+    { href: "#contacts", label: t.nav.contacts },
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -37,24 +41,19 @@ export default function Header() {
   ) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
-
     if (href.startsWith("/")) {
       navigate(href);
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
-
     const id = href.substring(1);
-
+    const scroll = () =>
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
     if (location.pathname === "/") {
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 300);
+      setTimeout(scroll, 300);
     } else {
       navigate("/");
-      setTimeout(() => {
-        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-      }, 300);
+      setTimeout(scroll, 300);
     }
   };
 
@@ -84,24 +83,27 @@ export default function Header() {
             MB Dev Academy
           </Link>
 
-          <nav className="hidden md:flex items-center gap-6">
-            {nav.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={(e) => handleNavClick(e, item.href)}
-                className="text-sm tracking-wide text-gray-300 hover:text-neonBlue transition-colors cursor-pointer relative group"
-              >
-                {item.label}
-                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neonBlue transition-all duration-300 group-hover:w-full"></span>
-              </a>
-            ))}
-          </nav>
+          {/* Desktop Menu */}
+          <div className="hidden md:flex items-center gap-6">
+            <nav className="flex items-center gap-6">
+              {nav.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={(e) => handleNavClick(e, item.href)}
+                  className="text-sm tracking-wide text-gray-300 hover:text-neonBlue transition-colors cursor-pointer relative group"
+                >
+                  {item.label}
+                  <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-neonBlue transition-all duration-300 group-hover:w-full"></span>
+                </a>
+              ))}
+            </nav>
+            <LanguageSwitcher />
+          </div>
 
           <button
             className="md:hidden text-white p-2 focus:outline-none z-50"
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            aria-label="Toggle menu"
           >
             {isMobileMenuOpen ? (
               <FaTimes size={24} className="text-neonBlue" />
@@ -126,15 +128,13 @@ export default function Header() {
           isMobileMenuOpen ? "translate-x-0" : "translate-x-full"
         }`}
       >
-        <div className="absolute top-0 right-0 w-40 h-40 bg-neonBlue/10 rounded-full blur-3xl pointer-events-none"></div>
-
-        <nav className="flex flex-col gap-6 relative z-10">
+        <nav className="flex flex-col gap-6 relative z-10 mb-8">
           {nav.map((item) => (
             <a
               key={item.href}
               href={item.href}
               onClick={(e) => handleNavClick(e, item.href)}
-              className="text-xl font-orbitron text-gray-300 hover:text-white hover:pl-2 transition-all duration-300 border-b border-white/5 pb-4 flex items-center justify-between group"
+              className="text-xl font-orbitron text-gray-300 hover:text-white border-b border-white/5 pb-4 flex items-center justify-between group"
             >
               {item.label}
               <span className="opacity-0 group-hover:opacity-100 text-neonBlue">
@@ -143,6 +143,13 @@ export default function Header() {
             </a>
           ))}
         </nav>
+
+        <div className="relative z-10">
+          <p className="text-gray-500 text-xs mb-2 uppercase tracking-widest">
+            Language
+          </p>
+          <LanguageSwitcher />
+        </div>
 
         <div className="mt-auto relative z-10">
           <p className="text-xs text-gray-500 text-center font-orbitron">

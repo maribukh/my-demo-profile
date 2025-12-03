@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { academyData } from "../data/academyData";
+import { useLanguage } from "../context/LanguageContext";
 import {
   FaUniversity,
   FaCertificate,
@@ -29,7 +30,8 @@ const getIconForTitle = (title: string) => {
 };
 
 export default function AboutInstructor() {
-  const { instructor } = academyData;
+  const { language, t } = useLanguage();
+  const { instructor } = academyData[language];
   const [expandedCardId, setExpandedCardId] = useState<number | null>(null);
 
   const handleCardClick = (id: number) => {
@@ -78,17 +80,17 @@ export default function AboutInstructor() {
           <h2 className="mt-8 text-4xl md:text-5xl font-bold tracking-widest font-orbitron text-white drop-shadow-[0_0_10px_rgba(0,240,255,0.5)]">
             {instructor.name}
           </h2>
-          <p className="mt-2 text-lg text-neonBlue font-semibold tracking-wider">
+          <p className="mt-2 text-lg text-neonBlue font-semibold tracking-wider font-orbitron">
             {instructor.title}
           </p>
-          <p className="mt-6 max-w-2xl mx-auto text-base text-gray-300/90 leading-relaxed">
+          <p className="mt-6 max-w-2xl mx-auto text-base text-gray-300/90 leading-relaxed font-body">
             {instructor.bio}
           </p>
         </div>
 
         <div className="my-16">
           <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-8 font-orbitron text-white">
-            Professional Experience
+            {t.instructor.expTitle}
           </h3>
           <div className="text-left space-y-6">
             {instructor.experience.map((exp) => (
@@ -101,27 +103,27 @@ export default function AboutInstructor() {
                     <div className="flex items-center gap-4">
                       <FaBriefcase className="text-3xl text-neonBlue flex-shrink-0" />
                       <div>
-                        <h4 className="text-xl font-bold text-white">
+                        <h4 className="text-xl font-bold text-white font-orbitron">
                           {exp.title}
                         </h4>
-                        <p className="text-base font-semibold text-neonBlue">
+                        <p className="text-base font-semibold text-neonBlue font-body">
                           {exp.company}
                         </p>
                       </div>
                     </div>
-                    <p className="mt-4 text-sm text-gray-300/80">
+                    <p className="mt-4 text-sm text-gray-300/80 font-body">
                       {exp.description}
                     </p>
                   </div>
                   <div className="md:col-span-1 md:border-l md:border-white/10 md:pl-6">
-                    <h5 className="text-sm font-semibold text-white mb-3">
-                      Key Skills
+                    <h5 className="text-sm font-semibold text-white mb-3 font-orbitron">
+                      {t.instructor.skills}
                     </h5>
                     <div className="flex flex-wrap gap-2">
                       {exp.keySkills.map((skill) => (
                         <span
                           key={skill}
-                          className="px-3 py-1 text-xs rounded-full bg-neonBlue/10 text-neonBlue border border-neonBlue/20"
+                          className="px-3 py-1 text-xs rounded-full bg-neonBlue/10 text-neonBlue border border-neonBlue/20 font-body"
                         >
                           {skill}
                         </span>
@@ -129,8 +131,8 @@ export default function AboutInstructor() {
                     </div>
                     {exp.projects && (
                       <div className="mt-4">
-                        <h5 className="text-sm font-semibold text-white mb-3">
-                          Projects
+                        <h5 className="text-sm font-semibold text-white mb-3 font-orbitron">
+                          {t.instructor.projects}
                         </h5>
                         <div className="space-y-2">
                           {exp.projects.map((project) => (
@@ -139,7 +141,7 @@ export default function AboutInstructor() {
                               target="_blank"
                               rel="noopener noreferrer"
                               key={project.name}
-                              className="flex items-center gap-2 text-sm text-gray-300 hover:text-neonBlue transition-colors duration-200"
+                              className="flex items-center gap-2 text-sm text-gray-300 hover:text-neonBlue transition-colors duration-200 font-body"
                             >
                               <FaGithub />
                               {project.name}
@@ -159,7 +161,7 @@ export default function AboutInstructor() {
 
         <div>
           <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-8 font-orbitron text-white">
-            Education & Certifications
+            {t.instructor.eduTitle}
           </h3>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left items-start">
             {instructor.educationHistory.map((item) => {
@@ -186,14 +188,16 @@ export default function AboutInstructor() {
                         </div>
                         <div>
                           <h4
-                            className={`font-semibold transition-colors duration-300 ${
+                            className={`font-semibold transition-colors duration-300 font-orbitron ${
                               isExpanded ? "text-neonBlue" : "text-white"
                             }`}
                           >
                             {item.title}
                           </h4>
-                          <p className="text-sm text-gray-400">{item.source}</p>
-                          <p className="text-xs text-gray-500 mt-1">
+                          <p className="text-sm text-gray-400 font-body">
+                            {item.source}
+                          </p>
+                          <p className="text-xs text-gray-500 mt-1 font-body">
                             {item.period}
                           </p>
                         </div>
@@ -213,14 +217,14 @@ export default function AboutInstructor() {
                       }`}
                     >
                       <div className="border-t border-white/10 pt-4">
-                        <h5 className="text-sm font-semibold text-white mb-2">
-                          Key Skills:
+                        <h5 className="text-sm font-semibold text-white mb-2 font-orbitron">
+                          {t.instructor.skills}:
                         </h5>
                         <ul className="space-y-2">
                           {item.keySkills.map((skill) => (
                             <li
                               key={skill}
-                              className="flex items-center gap-2 text-xs text-gray-300"
+                              className="flex items-center gap-2 text-xs text-gray-300 font-body"
                             >
                               <FaCheck className="text-neonBlue" size={12} />
                               {skill}
