@@ -1,73 +1,61 @@
-# React + TypeScript + Vite
+# MB Dev Academy Platform
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
 
-Currently, two official plugins are available:
+This repository contains the source code for an educational platform interface ("MB Dev Academy"). The project demonstrates modern web development practices, focusing on component-based architecture, strict typing, and cloud backend integration.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+**Live Deployment:** [https://edu-app-tsu.vercel.app](https://edu-app-tsu.vercel.app)
 
-## React Compiler
+---
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+## Architectural Status: Hybrid
 
-## Expanding the ESLint configuration
+This application operates on a **hybrid architecture**:
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+1.  **Content Delivery:** Course data and instructor profiles are currently served via static local data structures to ensure instant rendering performance for demonstration purposes.
+2.  **Data Persistence (Backend):** User registration and form submissions are integrated with a live **Supabase (PostgreSQL)** database.
 
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
+**Note:** This is a production-ready demonstration. The application requires valid API credentials to function correctly.
 
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
+---
 
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Technology Stack
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+The project utilizes a strictly typed, modern stack:
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+*   **Frontend Core:** React 18
+*   **Language:** TypeScript
+*   **Build System:** Vite
+*   **Styling:** Tailwind CSS
+*   **Backend / Database:** Supabase (PostgreSQL)
+*   **Integration:** REST API via Supabase Client
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
-```
+## Key Features
+
+*   **Fullstack Integration:** Functional registration forms connected to a cloud database.
+*   **Responsive Architecture:** Adaptive layout for Mobile, Tablet, and Desktop environments.
+*   **Type Safety:** Strict TypeScript configuration (`tsconfig.strict`) to minimize runtime errors.
+*   **Security Markers:** Implemented digital watermarking and console signatures for authorship verification.
+*   **Performance:** optimized lazy loading for heavy route components.
+
+---
+
+## Intellectual Property & License
+
+**STRICT PROPRIETARY LICENSE**
+
+**Copyright © 2025 Mariam Bukhaidze. All Rights Reserved.**
+
+This source code is the intellectual property of the author. It is published for **portfolio demonstration purposes only**.
+
+1.  **Prohibited:** Commercial use, modification, redistribution, or sublicensing of this software.
+2.  **Prohibited:** Copying code snippets for use in personal portfolios without explicit attribution.
+3.  **Allowed:** Viewing and studying the code for educational evaluation.
+
+Any unauthorized reproduction of this work will be considered a violation of copyright law.
+
+---
+
+## Installation and Setup
+
+Since this project connects to a private database, it requires environment variables to run locally.
