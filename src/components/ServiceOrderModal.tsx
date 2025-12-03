@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { supabase } from "../supabaseClient";
 import Button from "./UI/Button";
 import { FaTimes, FaCheckCircle, FaSpinner } from "react-icons/fa";
+import { useLanguage } from "../context/LanguageContext";
 
 interface Props {
   isOpen: boolean;
@@ -16,6 +17,7 @@ export default function ServiceOrderModal({
   serviceTitle,
   defaultMessage,
 }: Props) {
+  const { t } = useLanguage();
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [message, setMessage] = useState(defaultMessage);
@@ -72,62 +74,67 @@ export default function ServiceOrderModal({
         {status === "success" ? (
           <div className="flex flex-col items-center justify-center py-10 text-center">
             <FaCheckCircle className="text-5xl text-neonBlue mb-4" />
-            <h3 className="text-2xl font-bold text-white">Request Sent!</h3>
-            <p className="text-gray-400 mt-2">I will contact you shortly.</p>
+            <h3 className="text-2xl font-bold text-white font-orbitron">
+              {t.modal.success}
+            </h3>
+            <p className="text-gray-400 mt-2 font-body">
+              {t.modal.successDesc}
+            </p>
           </div>
         ) : (
           <>
             <h2 className="text-2xl font-bold text-white mb-2 font-orbitron">
-              Order: <span className="text-neonBlue">{serviceTitle}</span>
+              {t.modal.order}{" "}
+              <span className="text-neonBlue">{serviceTitle}</span>
             </h2>
-            <p className="text-sm text-gray-400 mb-6">
-              Fill out the details below to start our collaboration.
+            <p className="text-sm text-gray-400 mb-6 font-body">
+              {t.modal.desc}
             </p>
 
             <form onSubmit={handleSubmit} className="flex flex-col gap-4">
               <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                  Name
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 font-orbitron">
+                  {t.modal.labels.name}
                 </label>
                 <input
                   type="text"
                   required
                   value={name}
                   onChange={(e) => setName(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neonBlue focus:outline-none transition-colors"
-                  placeholder="Your Name"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neonBlue focus:outline-none transition-colors font-body"
+                  placeholder={t.modal.labels.name}
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                  Email
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 font-orbitron">
+                  {t.modal.labels.email}
                 </label>
                 <input
                   type="email"
                   required
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neonBlue focus:outline-none transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neonBlue focus:outline-none transition-colors font-body"
                   placeholder="you@example.com"
                 />
               </div>
 
               <div>
-                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">
-                  Project Details
+                <label className="block text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1 font-orbitron">
+                  {t.modal.labels.details}
                 </label>
                 <textarea
                   required
                   rows={4}
                   value={message}
                   onChange={(e) => setMessage(e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neonBlue focus:outline-none transition-colors resize-none"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-white focus:border-neonBlue focus:outline-none transition-colors resize-none font-body"
                 />
               </div>
 
               {status === "error" && (
-                <p className="text-red-400 text-sm">
+                <p className="text-red-400 text-sm font-body">
                   Something went wrong. Please try again.
                 </p>
               )}
@@ -141,7 +148,7 @@ export default function ServiceOrderModal({
                 {status === "loading" ? (
                   <FaSpinner className="animate-spin mx-auto" />
                 ) : (
-                  "Send Request"
+                  t.modal.btnSend
                 )}
               </Button>
             </form>
