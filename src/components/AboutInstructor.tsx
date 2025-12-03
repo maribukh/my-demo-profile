@@ -23,9 +23,9 @@ const getIconForTitle = (title: string) => {
     lowerCaseTitle.includes("react") ||
     lowerCaseTitle.includes("front-end")
   ) {
-    return <FaCode className="text-neonBlue" />;
+    return <FaCode className="text-neonPink" />;
   }
-  return <FaCertificate className="text-neonBlue" />;
+  return <FaCertificate className="text-neonPurple" />;
 };
 
 export default function AboutInstructor() {
@@ -37,21 +37,34 @@ export default function AboutInstructor() {
   };
 
   return (
-    <section id="about" className="container mx-auto px-4 py-16 sm:py-24">
+    <section
+      id="about"
+      className="relative container mx-auto px-4 py-16 sm:py-24 z-10"
+    >
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-[600px] -z-10 pointer-events-none opacity-40">
+        <div
+          className="w-full h-full"
+          style={{
+            backgroundImage: "url('/src/assets/bg-main.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            maskImage: "radial-gradient(circle, black 30%, transparent 70%)", // Делаем плавное исчезновение краев
+            WebkitMaskImage:
+              "radial-gradient(circle, black 30%, transparent 70%)",
+          }}
+        ></div>
+      </div>
+
       <div className="max-w-4xl mx-auto text-center">
-        <div className="flex flex-col items-center">
-          <div
-            className={`relative w-48 h-48 md:w-56 md:h-56 rounded-full p-1.5 
-                        bg-gradient-to-br from-neonBlue via-neutral-50 to-neonPink 
-                        shadow-neon-glow
-                        animate-gradient-rotation`}
-          >
-            <div className="relative w-full h-full rounded-full overflow-hidden bg-gray-900">
+        <div className="flex flex-col items-center justify-center mb-10">
+          <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
+            <div className="absolute inset-0 rounded-full animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,#00F0FF,#BC13FE,#FF00AA,#00F0FF)] blur-md opacity-80"></div>
+            <div className="relative w-[96%] h-[96%] rounded-full ] p-1 overflow-hidden z-10">
               {instructor.imageUrl ? (
                 <img
                   alt={instructor.name}
                   src={instructor.imageUrl}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-full"
                   loading="lazy"
                 />
               ) : (
@@ -61,24 +74,27 @@ export default function AboutInstructor() {
               )}
             </div>
           </div>
-          <h2 className="mt-6 text-4xl md:text-5xl font-bold tracking-widest font-orbitron">
+
+          <h2 className="mt-8 text-4xl md:text-5xl font-bold tracking-widest font-orbitron text-white drop-shadow-[0_0_10px_rgba(0,240,255,0.5)]">
             {instructor.name}
           </h2>
-          <p className="mt-2 text-lg text-neonBlue">{instructor.title}</p>
-          <p className="mt-4 max-w-2xl mx-auto text-base text-gray-300/90">
+          <p className="mt-2 text-lg text-neonBlue font-semibold tracking-wider">
+            {instructor.title}
+          </p>
+          <p className="mt-6 max-w-2xl mx-auto text-base text-gray-300/90 leading-relaxed">
             {instructor.bio}
           </p>
         </div>
 
-        <div className="my-12">
-          <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-8 font-orbitron">
+        <div className="my-16">
+          <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-8 font-orbitron text-white">
             Professional Experience
           </h3>
-          <div className="text-left">
+          <div className="text-left space-y-6">
             {instructor.experience.map((exp) => (
               <div
                 key={exp.id}
-                className="bg-white/5 border border-white/10 rounded-xl p-6 transition-all duration-300 hover:shadow-lg hover:shadow-neonBlue/20"
+                className="bg-white/5 border border-white/10 rounded-xl p-6 hover:border-neonBlue/50 transition-colors duration-300"
               >
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="md:col-span-2">
@@ -105,7 +121,7 @@ export default function AboutInstructor() {
                       {exp.keySkills.map((skill) => (
                         <span
                           key={skill}
-                          className="px-3 py-1 text-xs rounded-full bg-neonBlue/20 text-neonBlue"
+                          className="px-3 py-1 text-xs rounded-full bg-neonBlue/10 text-neonBlue border border-neonBlue/20"
                         >
                           {skill}
                         </span>
@@ -141,46 +157,57 @@ export default function AboutInstructor() {
 
         <div className="my-12 h-px bg-white/10 w-3/4 mx-auto"></div>
 
+        {/* EDUCATION & CERTIFICATIONS (Исправленные карточки) */}
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-8 font-orbitron">
+          <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-8 font-orbitron text-white">
             Education & Certifications
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left items-start">
             {instructor.educationHistory.map((item) => {
               const isExpanded = expandedCardId === item.id;
+
+              // Определяем цвет рамки: Если активна - яркая, если нет - тусклая
+              const borderClass = isExpanded
+                ? "border-neonBlue shadow-[0_0_15px_rgba(0,240,255,0.2)] bg-[#0A0A0F]"
+                : "border-white/10 hover:border-white/30 bg-white/5";
+
               return (
                 <div
                   key={item.id}
-                  className="group relative bg-white/5 border border-white/10 rounded-xl 
-                             transition-all duration-300 hover:border-neonBlue/80 hover:-translate-y-1"
+                  className={`
+                    relative rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer
+                    ${borderClass}
+                  `}
                   onClick={() => handleCardClick(item.id)}
                 >
-                  <div
-                    className="absolute inset-0 bg-neonBlue/10 rounded-xl blur-lg 
-                               opacity-0 group-hover:opacity-100 transition-opacity duration-300"
-                  ></div>
-                  <div className="relative p-5 cursor-pointer">
+                  <div className="p-5">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
-                        <div className="mt-1 text-2xl flex-shrink-0">
+                        <div className="mt-1 text-2xl flex-shrink-0 transition-colors duration-300">
                           {getIconForTitle(item.title)}
                         </div>
                         <div>
-                          <h4 className="font-semibold text-white">
+                          <h4
+                            className={`font-semibold transition-colors duration-300 ${
+                              isExpanded ? "text-neonBlue" : "text-white"
+                            }`}
+                          >
                             {item.title}
                           </h4>
-                          <p className="text-sm text-neonBlue">{item.source}</p>
-                          <p className="text-xs text-gray-400 mt-1">
+                          <p className="text-sm text-gray-400">{item.source}</p>
+                          <p className="text-xs text-gray-500 mt-1">
                             {item.period}
                           </p>
                         </div>
                       </div>
                       <FaChevronDown
                         className={`mt-1 text-white/50 flex-shrink-0 transition-transform duration-300 ${
-                          isExpanded ? "rotate-180" : ""
+                          isExpanded ? "rotate-180 text-neonBlue" : ""
                         }`}
                       />
                     </div>
+
+                    {/* Контент раскрывается плавно, не меняя ширину карточки */}
                     <div
                       className={`transition-all duration-500 ease-in-out overflow-hidden ${
                         isExpanded

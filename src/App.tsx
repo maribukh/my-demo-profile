@@ -10,6 +10,7 @@ import ScrollToTop from "./components/ScrollToTop";
 const LazyCourseFinder = lazy(() => import("./pages/CourseFinder"));
 const LazyCourseDetails = lazy(() => import("./pages/CourseDetails"));
 const LazyAboutInstructor = lazy(() => import("./components/AboutInstructor"));
+const LazyServices = lazy(() => import("./pages/Services"));
 
 const PageLoadingFallback = () => (
   <div className="flex min-h-[80vh] items-center justify-center">
@@ -74,6 +75,7 @@ function App() {
             <Route path="/" element={<MainPageLayout />} />
             <Route path="/course-finder" element={<LazyCourseFinder />} />
             <Route path="/course/:id" element={<LazyCourseDetails />} />
+            <Route path="/services" element={<LazyServices />} />
           </Routes>
         </Suspense>
       </main>

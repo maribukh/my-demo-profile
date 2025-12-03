@@ -1,7 +1,9 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
+import type React from "react";
 
 const nav = [
   { href: "#courses", label: "Courses" },
+  { href: "/services", label: "Services" },
   { href: "#about", label: "About Instructor" },
   { href: "#contacts", label: "Contacts" },
 ];
@@ -15,6 +17,13 @@ export default function Header() {
     href: string
   ) => {
     e.preventDefault();
+
+    if (href.startsWith("/")) {
+      navigate(href);
+      window.scrollTo({ top: 0, behavior: "smooth" });
+      return;
+    }
+
     const id = href.substring(1);
 
     if (location.pathname === "/") {
