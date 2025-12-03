@@ -48,7 +48,7 @@ export default function AboutInstructor() {
             backgroundImage: "url('/src/assets/bg-main.jpg')",
             backgroundSize: "cover",
             backgroundPosition: "center",
-            maskImage: "radial-gradient(circle, black 30%, transparent 70%)", // Делаем плавное исчезновение краев
+            maskImage: "radial-gradient(circle, black 30%, transparent 70%)",
             WebkitMaskImage:
               "radial-gradient(circle, black 30%, transparent 70%)",
           }}
@@ -157,7 +157,6 @@ export default function AboutInstructor() {
 
         <div className="my-12 h-px bg-white/10 w-3/4 mx-auto"></div>
 
-        {/* EDUCATION & CERTIFICATIONS (Исправленные карточки) */}
         <div>
           <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-8 font-orbitron text-white">
             Education & Certifications
@@ -166,7 +165,6 @@ export default function AboutInstructor() {
             {instructor.educationHistory.map((item) => {
               const isExpanded = expandedCardId === item.id;
 
-              // Определяем цвет рамки: Если активна - яркая, если нет - тусклая
               const borderClass = isExpanded
                 ? "border-neonBlue shadow-[0_0_15px_rgba(0,240,255,0.2)] bg-[#0A0A0F]"
                 : "border-white/10 hover:border-white/30 bg-white/5";
@@ -207,7 +205,6 @@ export default function AboutInstructor() {
                       />
                     </div>
 
-                    {/* Контент раскрывается плавно, не меняя ширину карточки */}
                     <div
                       className={`transition-all duration-500 ease-in-out overflow-hidden ${
                         isExpanded

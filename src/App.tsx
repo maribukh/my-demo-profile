@@ -6,6 +6,7 @@ import Features from "./components/Features";
 import CoursesList from "./components/CoursesList";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
+import TechTicker from "./components/TechTicker";
 
 const LazyCourseFinder = lazy(() => import("./pages/CourseFinder"));
 const LazyCourseDetails = lazy(() => import("./pages/CourseDetails"));
@@ -29,6 +30,7 @@ const SectionLoadingFallback = () => (
 const MainPageLayout = () => (
   <>
     <Hero />
+    <TechTicker />
     <Features />
     <CoursesList />
     <Suspense fallback={<SectionLoadingFallback />}>

@@ -16,6 +16,8 @@ export const servicesData = [
     icon: FaLaptopCode,
     color: "text-neonBlue",
     borderColor: "border-neonBlue",
+    defaultMessage:
+      "Hi Mariam, I need a modern Landing Page for my business. I have a deadline of 2 weeks. Can we discuss the details?",
   },
   {
     id: "react-app",
@@ -32,6 +34,8 @@ export const servicesData = [
     icon: FaRocket,
     color: "text-neonPink",
     borderColor: "border-neonPink",
+    defaultMessage:
+      "Hello! I am looking to build a custom React application. It requires user authentication and database integration. My budget is...",
   },
   {
     id: "consultation",
@@ -48,5 +52,7 @@ export const servicesData = [
     icon: FaMobileAlt,
     color: "text-neonPurple",
     borderColor: "border-neonPurple",
+    defaultMessage:
+      "Hi, I need help with my current React project. I am stuck on a specific bug/feature and need a code review.",
   },
 ];
