@@ -5,6 +5,7 @@ import Button from "../components/UI/Button";
 import { FaCheck, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";
 import ServiceOrderModal from "../components/ServiceOrderModal";
 import { useLanguage } from "../context/LanguageContext";
+import SEO from "../components/SEO";
 
 export default function Services() {
   const { language, t } = useLanguage();
@@ -24,9 +25,19 @@ export default function Services() {
 
   return (
     <>
+      <SEO
+        title={
+          language === "ka"
+            ? "სერვისები"
+            : language === "ru"
+            ? "Услуги"
+            : "Services"
+        }
+        description={t.services.desc}
+      />
+
       <div className="min-h-screen pt-24 pb-16 px-4">
         <div className="container mx-auto">
-          {/* Header Section */}
           <div className="text-center max-w-3xl mx-auto mb-16">
             <h1 className="text-4xl md:text-5xl font-bold font-orbitron text-white mb-6">
               {t.services.title}{" "}
@@ -37,7 +48,6 @@ export default function Services() {
             </p>
           </div>
 
-          {/* Cards Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto mb-20">
             {currentServices.map((service) => (
               <div
@@ -101,7 +111,6 @@ export default function Services() {
             ))}
           </div>
 
-          {/* Custom Project & Quick Contact Section */}
           <div className="relative bg-[#0A0A0F] border border-neonBlue/30 rounded-3xl p-8 md:p-12 max-w-5xl mx-auto overflow-hidden">
             <div className="absolute top-0 right-0 w-64 h-64 bg-neonBlue/10 rounded-full blur-[100px] pointer-events-none"></div>
             <div className="absolute bottom-0 left-0 w-64 h-64 bg-neonPink/10 rounded-full blur-[100px] pointer-events-none"></div>

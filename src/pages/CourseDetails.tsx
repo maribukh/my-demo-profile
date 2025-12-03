@@ -3,6 +3,7 @@ import { academyData } from "../data/academyData";
 import { useLanguage } from "../context/LanguageContext";
 import Button from "../components/UI/Button.tsx";
 import { FaClock, FaUsers, FaTag, FaCode, FaRoad } from "react-icons/fa";
+import SEO from "../components/SEO";
 
 export default function CourseDetails() {
   const { id } = useParams<{ id: string }>();
@@ -42,6 +43,10 @@ export default function CourseDetails() {
 
   return (
     <div className="container mx-auto px-4 py-16 md:py-24">
+      <SEO
+        title={course.title}
+        description={course.description.substring(0, 150) + "..."}
+      />
       <div className="max-w-4xl mx-auto">
         <header className="text-center">
           <span

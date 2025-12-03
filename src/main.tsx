@@ -2,13 +2,16 @@ import ReactDOM from "react-dom/client";
 import App from "./App";
 import { BrowserRouter } from "react-router-dom";
 import { LanguageProvider } from "./context/LanguageContext";
+import { HelmetProvider } from "react-helmet-async";
 import "./index.css";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <BrowserRouter>
-    <LanguageProvider>
+    <HelmetProvider>
       {" "}
-      <App />
-    </LanguageProvider>
+      <LanguageProvider>
+        <App />
+      </LanguageProvider>
+    </HelmetProvider>
   </BrowserRouter>
 );

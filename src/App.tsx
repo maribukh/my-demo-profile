@@ -7,7 +7,8 @@ import CoursesList from "./components/CoursesList";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import TechTicker from "./components/TechTicker";
-import NotFound from "./pages/NotFound"; 
+import NotFound from "./pages/NotFound";
+import SEO from "./components/SEO";
 
 const LazyCourseFinder = lazy(() => import("./pages/CourseFinder"));
 const LazyCourseDetails = lazy(() => import("./pages/CourseDetails"));
@@ -30,6 +31,10 @@ const SectionLoadingFallback = () => (
 
 const MainPageLayout = () => (
   <>
+    <SEO
+      title="Future of Front-End"
+      description="Interactive courses on React and TypeScript from a practicing expert. Master the stack that powers the modern web."
+    />
     <Hero />
     <TechTicker />
     <Features />
