@@ -3,17 +3,17 @@ import { lazy, Suspense, useEffect } from "react";
 import Header from "./components/Header";
 import Hero from "./components/Hero";
 import Features from "./components/Features";
-import CoursesList from "./components/CoursesList";
 import Footer from "./components/Footer";
 import ScrollToTop from "./components/ScrollToTop";
 import TechTicker from "./components/TechTicker";
 import NotFound from "./pages/NotFound";
 import SEO from "./components/SEO";
+import ServicesList from "./components/ServicesList";
+import Portfolio from "./components/Portfolio";
 
 const LazyCourseFinder = lazy(() => import("./pages/CourseFinder"));
 const LazyCourseDetails = lazy(() => import("./pages/CourseDetails"));
 const LazyAboutInstructor = lazy(() => import("./components/AboutInstructor"));
-const LazyServices = lazy(() => import("./pages/Services"));
 
 const PageLoadingFallback = () => (
   <div className="flex min-h-[80vh] items-center justify-center">
@@ -32,16 +32,17 @@ const SectionLoadingFallback = () => (
 const MainPageLayout = () => (
   <>
     <SEO
-      title="Future of Front-End"
-      description="Interactive courses on React and TypeScript from a practicing expert. Master the stack that powers the modern web."
+      title="Mariam Bukhaidze | Front-End Developer"
+      description="Professional web development services. React, TypeScript, and modern UI/UX."
     />
     <Hero />
     <TechTicker />
-    <Features />
-    <CoursesList />
+    <ServicesList />
+    <Portfolio />
     <Suspense fallback={<SectionLoadingFallback />}>
       <LazyAboutInstructor />
     </Suspense>
+    <Features />
   </>
 );
 
@@ -81,9 +82,8 @@ function App() {
         <Suspense fallback={<PageLoadingFallback />}>
           <Routes>
             <Route path="/" element={<MainPageLayout />} />
-            <Route path="/course-finder" element={<LazyCourseFinder />} />
             <Route path="/course/:id" element={<LazyCourseDetails />} />
-            <Route path="/services" element={<LazyServices />} />
+            <Route path="/course-finder" element={<LazyCourseFinder />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

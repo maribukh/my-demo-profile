@@ -3,7 +3,7 @@ export type Language = "en" | "ka" | "ru";
 export const translations = {
   en: {
     nav: {
-      courses: "Mentorship",
+      courses: "Portfolio",
       services: "Services",
       about: "About Me",
       contacts: "Contact",
@@ -13,7 +13,7 @@ export const translations = {
       subtitle:
         "Professional Front-End Developer specializing in React and TypeScript. I turn complex problems into elegant, fast, and scalable web solutions.",
       btnPrimary: "My Services",
-      btnSecondary: "Mentorship Program",
+      btnSecondary: "View Portfolio",
       btnCourses: "View All Programs",
       btnInstructor: "About Me",
     },
@@ -111,7 +111,7 @@ export const translations = {
   },
   ka: {
     nav: {
-      courses: "მენტორინგი",
+      courses: "პორტფოლიო",
       services: "სერვისები",
       about: "ჩემ შესახებ",
       contacts: "კონტაქტი",
@@ -121,7 +121,7 @@ export const translations = {
       subtitle:
         "პროფესიონალი Front-End დეველოპერი. ვქმნი სწრაფ, დაცულ და ადაპტურ ვებ-აპლიკაციებს React-ისა და TypeScript-ის გამოყენებით.",
       btnPrimary: "სერვისები",
-      btnSecondary: "სასწავლო პროგრამები",
+      btnSecondary: "ნამუშევრები",
       btnCourses: "ყველა პროგრამა",
       btnInstructor: "ჩემ შესახებ",
     },
@@ -219,7 +219,7 @@ export const translations = {
   },
   ru: {
     nav: {
-      courses: "Менторство",
+      courses: "Портфолио",
       services: "Услуги",
       about: "Обо мне",
       contacts: "Контакты",
@@ -229,7 +229,7 @@ export const translations = {
       subtitle:
         "Профессиональный Front-End разработчик (React + TypeScript). Превращаю идеи в быстрые, красивые и масштабируемые веб-приложения.",
       btnPrimary: "Мои услуги",
-      btnSecondary: "Программа менторства",
+      btnSecondary: "Портфолио",
       btnCourses: "Все программы",
       btnInstructor: "Обо мне",
     },

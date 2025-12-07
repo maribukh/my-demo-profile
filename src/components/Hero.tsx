@@ -5,14 +5,16 @@ import { useLanguage } from "../context/LanguageContext";
 export default function Hero() {
   const { t } = useLanguage();
 
-  const scrollToCourses = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handlePrimaryClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    document.getElementById("courses")?.scrollIntoView({ behavior: "smooth" });
+    document.getElementById("services")?.scrollIntoView({ behavior: "smooth" });
   };
 
-  const scrollToInstructor = (e: React.MouseEvent<HTMLButtonElement>) => {
+  const handleSecondaryClick = (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
-    document.getElementById("about")?.scrollIntoView({ behavior: "smooth" });
+    document
+      .getElementById("portfolio")
+      ?.scrollIntoView({ behavior: "smooth" });
   };
 
   return (
@@ -24,7 +26,7 @@ export default function Hero() {
           {t.hero.title}
         </h1>
 
-        <p className="mt-6 text-sm md:text-lg text-[#E0E0E0]/80 max-w-xl mx-auto px-2">
+        <p className="mt-6 text-sm md:text-lg text-[#E0E0E0]/80 max-w-xl mx-auto px-2 font-body">
           {t.hero.subtitle}
         </p>
 
@@ -32,19 +34,19 @@ export default function Hero() {
           <Button
             variant="primary"
             size="lg"
-            onClick={scrollToCourses}
+            onClick={handlePrimaryClick}
             className="w-full sm:w-auto"
           >
-            {t.hero.btnCourses}
+            {t.hero.btnPrimary}
           </Button>
 
           <Button
             variant="glass"
             size="lg"
-            onClick={scrollToInstructor}
+            onClick={handleSecondaryClick}
             className="w-full sm:w-auto"
           >
-            {t.hero.btnInstructor}
+            {t.hero.btnSecondary}
           </Button>
         </div>
       </div>

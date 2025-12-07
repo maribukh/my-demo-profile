@@ -13,9 +13,9 @@ export default function Header() {
   const { t } = useLanguage();
 
   const nav = [
-    { href: "/services", label: t.nav.services },
+    { href: "#services", label: t.nav.services },
+    { href: "#portfolio", label: t.nav.courses },
     { href: "#about", label: t.nav.about },
-    { href: "#courses", label: t.nav.courses },
     { href: "#contacts", label: t.nav.contacts },
   ];
 
@@ -41,19 +41,24 @@ export default function Header() {
   ) => {
     e.preventDefault();
     setIsMobileMenuOpen(false);
+
     if (href.startsWith("/")) {
       navigate(href);
       window.scrollTo({ top: 0, behavior: "smooth" });
       return;
     }
+
     const id = href.substring(1);
-    const scroll = () =>
-      document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+
     if (location.pathname === "/") {
-      setTimeout(scroll, 300);
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
     } else {
       navigate("/");
-      setTimeout(scroll, 300);
+      setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+      }, 300);
     }
   };
 

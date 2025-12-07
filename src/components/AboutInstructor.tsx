@@ -7,11 +7,12 @@ import {
   FaCertificate,
   FaCode,
   FaChevronDown,
-  FaCheck,
+  FaCheckCircle,
   FaBriefcase,
   FaGithub,
   FaMapMarkerAlt,
   FaGlobe,
+  FaGraduationCap,
 } from "react-icons/fa";
 
 const getIconForTitle = (title: string) => {
@@ -213,87 +214,113 @@ export default function AboutInstructor() {
           </div>
         </div>
 
-        <div className="my-12 h-px bg-white/10 w-3/4 mx-auto"></div>
+        <div className="my-16 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent w-3/4 mx-auto"></div>
 
         <div>
-          <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-8 font-orbitron text-white">
+          <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-12 font-orbitron text-white">
             {t.instructor.eduTitle}
           </h3>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left items-start">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6 text-left">
             {instructor.educationHistory.map((item) => {
               const isExpanded = expandedCardId === item.id;
-
-              const borderClass = isExpanded
-                ? "border-neonBlue shadow-[0_0_15px_rgba(0,240,255,0.2)] bg-gradient-to-b from-[#0A0A0F] to-[#0A0A0F]/80"
-                : "border-white/10 hover:border-white/30 bg-white/5";
 
               return (
                 <div
                   key={item.id}
-                  className={`
-                    relative rounded-xl border transition-all duration-300 overflow-hidden cursor-pointer
-                    ${borderClass}
-                  `}
                   onClick={() => handleCardClick(item.id)}
+                  className={`
+                    relative group cursor-pointer overflow-hidden rounded-2xl border transition-all duration-500
+                    ${
+                      isExpanded
+                        ? "border-neonBlue/50 bg-[#0A0A0F] shadow-[0_0_30px_rgba(0,240,255,0.1)]"
+                        : "border-white/10 bg-white/5 hover:border-white/30 hover:bg-white/10"
+                    }
+                  `}
                 >
-                  <div className="p-5 relative z-10">
+                  {/* Decorative Tech Corners */}
+                  <div className="absolute top-0 right-0 w-8 h-8 border-t-2 border-r-2 border-white/10 rounded-tr-lg group-hover:border-neonBlue/50 transition-colors"></div>
+                  <div className="absolute bottom-0 left-0 w-8 h-8 border-b-2 border-l-2 border-white/10 rounded-bl-lg group-hover:border-neonBlue/50 transition-colors"></div>
+
+                  <div className="p-6 relative z-10">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
-                        <div className="mt-1 text-2xl flex-shrink-0 transition-colors duration-300">
+                        <div
+                          className={`
+                          p-3 rounded-xl text-2xl transition-all duration-300
+                          ${
+                            isExpanded
+                              ? "bg-neonBlue/10 text-neonBlue"
+                              : "bg-black/30 text-gray-400 group-hover:text-neonBlue"
+                          }
+                        `}
+                        >
                           {getIconForTitle(item.title)}
                         </div>
                         <div>
+                          <div className="flex items-center gap-2">
+                            <span className="text-xs font-bold text-gray-500 uppercase tracking-wider font-orbitron">
+                              {item.period}
+                            </span>
+                            {isExpanded && (
+                              <span className="flex items-center gap-1 text-xs text-green-400 font-bold bg-green-400/10 px-2 py-0.5 rounded-full">
+                                <FaCheckCircle size={10} /> Verified
+                              </span>
+                            )}
+                          </div>
                           <h4
-                            className={`font-semibold transition-colors duration-300 font-orbitron ${
-                              isExpanded ? "text-neonBlue" : "text-white"
+                            className={`text-lg font-bold font-orbitron mt-1 leading-tight transition-colors ${
+                              isExpanded ? "text-white" : "text-gray-200"
                             }`}
                           >
                             {item.title}
                           </h4>
-                          <p className="text-sm text-gray-400 font-body">
+                          <p className="text-sm text-neonBlue font-semibold mt-1 font-body">
                             {item.source}
-                          </p>
-                          <p className="text-xs text-gray-500 mt-1 font-body">
-                            {item.period}
                           </p>
                         </div>
                       </div>
                       <FaChevronDown
-                        className={`mt-1 text-white/50 flex-shrink-0 transition-transform duration-300 ${
+                        className={`text-gray-500 transition-transform duration-500 ${
                           isExpanded ? "rotate-180 text-neonBlue" : ""
                         }`}
                       />
                     </div>
 
                     <div
-                      className={`transition-all duration-500 ease-in-out overflow-hidden ${
+                      className={`grid transition-all duration-500 ease-in-out ${
                         isExpanded
-                          ? "max-h-96 opacity-100 mt-4"
-                          : "max-h-0 opacity-0"
+                          ? "grid-rows-[1fr] opacity-100 mt-6"
+                          : "grid-rows-[0fr] opacity-0"
                       }`}
                     >
-                      <div className="border-t border-white/10 pt-4">
-                        <h5 className="text-sm font-semibold text-white mb-2 font-orbitron">
-                          {t.instructor.skills}:
-                        </h5>
-                        <ul className="space-y-2">
-                          {item.keySkills.map((skill) => (
-                            <li
-                              key={skill}
-                              className="flex items-center gap-2 text-xs text-gray-300 font-body"
-                            >
-                              <FaCheck className="text-neonBlue" size={12} />
-                              {skill}
-                            </li>
-                          ))}
-                        </ul>
+                      <div className="overflow-hidden">
+                        <div className="p-4 bg-black/30 rounded-lg border border-white/5">
+                          <p className="text-sm text-gray-300 font-body mb-4 leading-relaxed">
+                            {item.description}
+                          </p>
+                          <h5 className="text-xs font-bold text-white mb-2 font-orbitron uppercase">
+                            Skills Acquired:
+                          </h5>
+                          <div className="flex flex-wrap gap-2">
+                            {item.keySkills.map((skill) => (
+                              <span
+                                key={skill}
+                                className="text-xs px-2 py-1 rounded bg-white/5 text-gray-300 border border-white/10 font-body"
+                              >
+                                {skill}
+                              </span>
+                            ))}
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
 
-                  {isExpanded && (
-                    <div className="absolute inset-0 bg-neonBlue/5 pointer-events-none"></div>
-                  )}
+                  <div
+                    className={`absolute inset-0 bg-gradient-to-br from-neonBlue/5 via-transparent to-transparent pointer-events-none transition-opacity duration-500 ${
+                      isExpanded ? "opacity-100" : "opacity-0"
+                    }`}
+                  ></div>
                 </div>
               );
             })}
