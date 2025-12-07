@@ -1,5 +1,4 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
 import { servicesData } from "../data/servicesData";
 import Button from "../components/UI/Button";
 import { FaCheck, FaTelegramPlane, FaLinkedinIn } from "react-icons/fa";

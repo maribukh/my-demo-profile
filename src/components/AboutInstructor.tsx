@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { academyData } from "../data/academyData";
 import { useLanguage } from "../context/LanguageContext";
+import bgMain from "../assets/bg-main.jpg";
+
 import {
   FaUniversity,
   FaCertificate,
@@ -47,7 +49,7 @@ export default function AboutInstructor() {
         <div
           className="w-full h-full"
           style={{
-            backgroundImage: "url('/src/assets/bg-main.jpg')",
+            backgroundImage: `url(${bgMain})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             maskImage: "radial-gradient(circle, black 30%, transparent 70%)",
@@ -61,7 +63,7 @@ export default function AboutInstructor() {
         <div className="flex flex-col items-center justify-center mb-10">
           <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
             <div className="absolute inset-0 rounded-full animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,#00F0FF,#BC13FE,#FF00AA,#00F0FF)] blur-md opacity-80"></div>
-            <div className="relative w-[96%] h-[96%] rounded-full ] p-1 overflow-hidden z-10">
+            <div className="relative w-[96%] h-[96%] rounded-full p-1 overflow-hidden z-10">
               {instructor.imageUrl ? (
                 <img
                   alt={instructor.name}
@@ -168,7 +170,7 @@ export default function AboutInstructor() {
               const isExpanded = expandedCardId === item.id;
 
               const borderClass = isExpanded
-                ? "border-neonBlue shadow-[0_0_15px_rgba(0,240,255,0.2)] bg-[#0A0A0F]"
+                ? "border-neonBlue shadow-[0_0_15px_rgba(0,240,255,0.2)] bg-gradient-to-b from-[#0A0A0F] to-[#0A0A0F]/80"
                 : "border-white/10 hover:border-white/30 bg-white/5";
 
               return (
@@ -180,7 +182,7 @@ export default function AboutInstructor() {
                   `}
                   onClick={() => handleCardClick(item.id)}
                 >
-                  <div className="p-5">
+                  <div className="p-5 relative z-10">
                     <div className="flex items-start justify-between gap-4">
                       <div className="flex items-start gap-4">
                         <div className="mt-1 text-2xl flex-shrink-0 transition-colors duration-300">
@@ -234,6 +236,10 @@ export default function AboutInstructor() {
                       </div>
                     </div>
                   </div>
+
+                  {isExpanded && (
+                    <div className="absolute inset-0 bg-neonBlue/5 pointer-events-none"></div>
+                  )}
                 </div>
               );
             })}
