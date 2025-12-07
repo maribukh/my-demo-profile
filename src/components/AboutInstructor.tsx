@@ -12,7 +12,6 @@ import {
   FaGithub,
   FaMapMarkerAlt,
   FaGlobe,
-  FaCircle,
 } from "react-icons/fa";
 
 const getIconForTitle = (title: string) => {
