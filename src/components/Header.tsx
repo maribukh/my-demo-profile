@@ -1,8 +1,8 @@
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { FaBars, FaTimes } from "react-icons/fa";
-import LanguageSwitcher from "./LanguageSwitcher"; 
-import { useLanguage } from "../context/LanguageContext"; 
+import LanguageSwitcher from "./LanguageSwitcher";
+import { useLanguage } from "../context/LanguageContext";
 
 export default function Header() {
   const navigate = useNavigate();
@@ -10,12 +10,12 @@ export default function Header() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isScrolled, setIsScrolled] = useState(false);
 
-  const { t } = useLanguage(); 
+  const { t } = useLanguage();
 
   const nav = [
-    { href: "#courses", label: t.nav.courses },
     { href: "/services", label: t.nav.services },
     { href: "#about", label: t.nav.about },
+    { href: "#courses", label: t.nav.courses },
     { href: "#contacts", label: t.nav.contacts },
   ];
 
@@ -80,10 +80,9 @@ export default function Header() {
             }}
             className="text-lg md:text-xl font-bold tracking-widest text-white cursor-pointer font-orbitron z-50"
           >
-            MB Dev Academy
+            Mariam <span className="text-neonBlue">Bukhaidze</span>
           </Link>
 
-          {/* Desktop Menu */}
           <div className="hidden md:flex items-center gap-6">
             <nav className="flex items-center gap-6">
               {nav.map((item) => (
@@ -153,7 +152,7 @@ export default function Header() {
 
         <div className="mt-auto relative z-10">
           <p className="text-xs text-gray-500 text-center font-orbitron">
-            MB Dev Academy © 2025
+            Mariam Bukhaidze © 2025
           </p>
         </div>
       </div>

@@ -50,13 +50,12 @@ type AcademyData = {
 };
 
 export const academyData: Record<Language, AcademyData> = {
-  // ENGLISH
   en: {
     instructor: {
       name: "Mariam Bukhaidze",
       imageUrl: Photo,
       title: "Software Engineer & Front-End Developer",
-      bio: "Passionate Front-End Developer with hands-on experience in React and TypeScript through academic and personal projects. I love building responsive, user-friendly applications and continuously learning new technologies to improve my skills.",
+      bio: "I am a Front-End Developer passionate about building high-quality web applications. I specialize in React and TypeScript, focusing on creating responsive, accessible, and performant user interfaces. Available for freelance projects and technical consultation.",
       contact: {
         email: "mariebukh@gmail.com",
         github: "https://github.com/maribukh",
@@ -118,7 +117,7 @@ export const academyData: Record<Language, AcademyData> = {
         },
         {
           id: 3,
-          period: "2025 - 2025",
+          period: "2025 - Present",
           title: "Women Mentorship in Tech",
           source: "Business and Technology University",
           description:
@@ -162,7 +161,7 @@ export const academyData: Record<Language, AcademyData> = {
     courses: [
       {
         id: "react-full-immersion",
-        title: "React: Full Immersion",
+        title: "React Mentorship Program",
         level: "Beginner",
         duration: "12 Weeks",
         description:
@@ -254,7 +253,7 @@ export const academyData: Record<Language, AcademyData> = {
       },
       {
         id: "real-time-chat-workshop",
-        title: "Workshop: Real-Time Chat with React",
+        title: "Workshop: Real-Time Chat",
         level: "Workshop",
         duration: "4 Weeks",
         description:
@@ -297,13 +296,12 @@ export const academyData: Record<Language, AcademyData> = {
     ],
   },
 
-  // GEORGIAN
   ka: {
     instructor: {
       name: "მარიამ ბუხაიძე",
       imageUrl: Photo,
       title: "Software Engineer & Front-End Developer",
-      bio: "ენთუზიასტი Front-End დეველოპერი React-ისა და TypeScript-ის პრაქტიკული გამოცდილებით. მიყვარს საპასუხო (responsive), მომხმარებელზე მორგებული აპლიკაციების შექმნა და მუდმივად ვსწავლობ ახალ ტექნოლოგიებს უნარების გასაუმჯობესებლად.",
+      bio: "ვარ Front-End დეველოპერი, რომელიც ფოკუსირებულია ხარისხიანი ვებ-აპლიკაციების შექმნაზე. ვსპეციალიზდები React-სა და TypeScript-ზე. ვიღებ შეკვეთებს ვებსაიტების დამზადებასა და ტექნიკურ მხარდაჭერაზე.",
       contact: {
         email: "mariebukh@gmail.com",
         github: "https://github.com/maribukh",
@@ -367,7 +365,7 @@ export const academyData: Record<Language, AcademyData> = {
         },
         {
           id: 3,
-          period: "2025 - 2025",
+          period: "2025 - დღემდე",
           title: "Women Mentorship in Tech",
           source: "ბიზნესისა და ტექნოლოგიების უნივერსიტეტი (BTU)",
           description:
@@ -411,7 +409,7 @@ export const academyData: Record<Language, AcademyData> = {
     courses: [
       {
         id: "react-full-immersion",
-        title: "React: სრული იმერსია",
+        title: "React მენტორინგი",
         level: "Beginner",
         duration: "12 კვირა",
         description:
@@ -545,13 +543,12 @@ export const academyData: Record<Language, AcademyData> = {
     ],
   },
 
-  // RUSSIAN
   ru: {
     instructor: {
       name: "Мариам Бухаидзе",
       imageUrl: Photo,
       title: "Software Engineer & Front-End Developer",
-      bio: "Увлеченный Front-End разработчик с практическим опытом в React и TypeScript. Люблю создавать отзывчивые, удобные приложения и постоянно изучаю новые технологии для совершенствования своих навыков.",
+      bio: "Front-End разработчик, специализирующийся на создании современных веб-приложений. Основной стек: React и TypeScript. Открыта для фриланс-заказов и долгосрочного сотрудничества по разработке интерфейсов.",
       contact: {
         email: "mariebukh@gmail.com",
         github: "https://github.com/maribukh",
@@ -615,7 +612,7 @@ export const academyData: Record<Language, AcademyData> = {
         },
         {
           id: 3,
-          period: "2025 - 2025",
+          period: "2025 - Настоящее время",
           title: "Women Mentorship in Tech",
           source: "Университет бизнеса и технологий (BTU)",
           description:
@@ -659,7 +656,7 @@ export const academyData: Record<Language, AcademyData> = {
     courses: [
       {
         id: "react-full-immersion",
-        title: "React: Полное погружение",
+        title: "React Менторство",
         level: "Beginner",
         duration: "12 Недель",
         description:

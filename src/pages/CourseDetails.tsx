@@ -130,14 +130,14 @@ export default function CourseDetails() {
 
         <div className="mt-20 text-center bg-white/5 border border-neonBlue/50 rounded-2xl p-8 shadow-lg shadow-neonBlue/10">
           <h3 className="text-2xl font-bold text-white font-orbitron">
-            Ready to Start Your Journey?
+            {t.courses.cta.title}
           </h3>
           <p className="mt-2 text-gray-300/80 font-body">
-            Register now to secure your spot in the next cohort.
+            {t.courses.cta.desc}
           </p>
           <Link to="/course-finder" className="mt-6 inline-block">
             <Button variant="primary" size="lg">
-              Register For This Course
+              {t.courses.cta.btn}
             </Button>
           </Link>
         </div>

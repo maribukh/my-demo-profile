@@ -106,12 +106,9 @@ export default function AboutInstructor() {
                   index % 2 === 0 ? "md:flex-row-reverse" : ""
                 }`}
               >
-                {/* Точка на линии */}
                 <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0F] border-2 border-neonBlue rounded-full -translate-x-1/2 mt-6 z-20 hidden md:block shadow-[0_0_10px_#00F0FF]"></div>
 
-                {/* ПРАВАЯ ЧАСТЬ (Заполнитель или Статус) */}
                 <div className="flex-1 hidden md:flex justify-start">
-                  {/* Если это первый элемент, показываем Карточку Статуса вместо пустоты */}
                   {index === 0 && (
                     <div className="w-full relative group">
                       <div className="absolute inset-0 bg-gradient-to-r from-neonBlue/10 to-transparent rounded-xl blur-lg opacity-50"></div>
@@ -148,7 +145,6 @@ export default function AboutInstructor() {
                   )}
                 </div>
 
-                {/* КАРТОЧКА ОПЫТА (Левая часть) */}
                 <div className="flex-1 w-full relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-neonBlue/20 to-neonPurple/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
