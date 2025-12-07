@@ -2,7 +2,6 @@ import { useState } from "react";
 import { academyData } from "../data/academyData";
 import { useLanguage } from "../context/LanguageContext";
 import bgMain from "../assets/bg-main.jpg";
-
 import {
   FaUniversity,
   FaCertificate,
@@ -11,6 +10,9 @@ import {
   FaCheck,
   FaBriefcase,
   FaGithub,
+  FaMapMarkerAlt,
+  FaGlobe,
+  FaCircle,
 } from "react-icons/fa";
 
 const getIconForTitle = (title: string) => {
@@ -90,50 +92,105 @@ export default function AboutInstructor() {
           </p>
         </div>
 
-        <div className="my-16">
-          <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-8 font-orbitron text-white">
+        <div className="my-16 relative">
+          <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-12 font-orbitron text-white">
             {t.instructor.expTitle}
           </h3>
-          <div className="text-left space-y-6">
-            {instructor.experience.map((exp) => (
+
+          <div className="absolute left-4 md:left-1/2 top-20 bottom-0 w-px bg-gradient-to-b from-neonBlue/50 via-neonPurple/50 to-transparent -translate-x-1/2 hidden md:block"></div>
+
+          <div className="space-y-12">
+            {instructor.experience.map((exp, index) => (
               <div
                 key={exp.id}
-                className="bg-white/5 border border-white/10 rounded-xl p-6 hover:border-neonBlue/50 transition-colors duration-300"
+                className={`relative flex flex-col md:flex-row gap-8 items-start ${
+                  index % 2 === 0 ? "md:flex-row-reverse" : ""
+                }`}
               >
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="md:col-span-2">
-                    <div className="flex items-center gap-4">
-                      <FaBriefcase className="text-3xl text-neonBlue flex-shrink-0" />
+                {/* Точка на линии */}
+                <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0F] border-2 border-neonBlue rounded-full -translate-x-1/2 mt-6 z-20 hidden md:block shadow-[0_0_10px_#00F0FF]"></div>
+
+                {/* ПРАВАЯ ЧАСТЬ (Заполнитель или Статус) */}
+                <div className="flex-1 hidden md:flex justify-start">
+                  {/* Если это первый элемент, показываем Карточку Статуса вместо пустоты */}
+                  {index === 0 && (
+                    <div className="w-full relative group">
+                      <div className="absolute inset-0 bg-gradient-to-r from-neonBlue/10 to-transparent rounded-xl blur-lg opacity-50"></div>
+                      <div className="relative bg-[#0A0A0F]/60 border border-white/10 rounded-xl p-6 h-full flex flex-col justify-center gap-4 hover:border-white/20 transition-all">
+                        <h4 className="text-sm uppercase tracking-widest text-gray-500 font-orbitron mb-2">
+                          Current Status
+                        </h4>
+
+                        <div className="flex items-center gap-3">
+                          <span className="relative flex h-3 w-3">
+                            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span className="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                          </span>
+                          <span className="text-white font-semibold font-body">
+                            Open to Work / Freelance
+                          </span>
+                        </div>
+
+                        <div className="w-full h-px bg-white/10"></div>
+
+                        <div className="flex items-center gap-3 text-gray-300">
+                          <FaMapMarkerAlt className="text-neonBlue" />
+                          <span className="font-body">Tbilisi, Georgia</span>
+                        </div>
+
+                        <div className="flex items-center gap-3 text-gray-300">
+                          <FaGlobe className="text-neonPurple" />
+                          <span className="font-body">
+                            English, Georgian, Russian
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+                  )}
+                </div>
+
+                {/* КАРТОЧКА ОПЫТА (Левая часть) */}
+                <div className="flex-1 w-full relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-neonBlue/20 to-neonPurple/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  <div className="relative bg-[#0A0A0F]/80 backdrop-blur-md border border-white/10 rounded-xl p-6 hover:border-neonBlue/50 transition-all duration-300 group-hover:-translate-y-1 shadow-lg">
+                    <div className="flex items-center gap-4 mb-4 border-b border-white/10 pb-4">
+                      <div className="p-3 rounded-lg bg-white/5 text-neonBlue text-xl">
+                        <FaBriefcase />
+                      </div>
                       <div>
-                        <h4 className="text-xl font-bold text-white font-orbitron">
+                        <h4 className="text-xl font-bold text-white font-orbitron leading-tight">
                           {exp.title}
                         </h4>
-                        <p className="text-base font-semibold text-neonBlue font-body">
+                        <p className="text-sm font-semibold text-neonBlue font-body mt-1">
                           {exp.company}
                         </p>
                       </div>
                     </div>
-                    <p className="mt-4 text-sm text-gray-300/80 font-body">
+
+                    <p className="text-sm text-gray-300 font-body leading-relaxed mb-6">
                       {exp.description}
                     </p>
-                  </div>
-                  <div className="md:col-span-1 md:border-l md:border-white/10 md:pl-6">
-                    <h5 className="text-sm font-semibold text-white mb-3 font-orbitron">
-                      {t.instructor.skills}
-                    </h5>
-                    <div className="flex flex-wrap gap-2">
-                      {exp.keySkills.map((skill) => (
-                        <span
-                          key={skill}
-                          className="px-3 py-1 text-xs rounded-full bg-neonBlue/10 text-neonBlue border border-neonBlue/20 font-body"
-                        >
-                          {skill}
-                        </span>
-                      ))}
+
+                    <div>
+                      <h5 className="text-xs uppercase tracking-widest text-gray-500 mb-3 font-orbitron">
+                        {t.instructor.skills}
+                      </h5>
+                      <div className="flex flex-wrap gap-2">
+                        {exp.keySkills.map((skill) => (
+                          <span
+                            key={skill}
+                            className="px-3 py-1 text-xs font-medium rounded-full bg-neonBlue/10 text-neonBlue border border-neonBlue/20 font-body shadow-[0_0_5px_rgba(0,240,255,0.1)]"
+                          >
+                            {skill}
+                          </span>
+                        ))}
+                      </div>
                     </div>
+
                     {exp.projects && (
-                      <div className="mt-4">
-                        <h5 className="text-sm font-semibold text-white mb-3 font-orbitron">
+                      <div className="mt-6 pt-4 border-t border-white/10">
+                        <h5 className="text-xs uppercase tracking-widest text-gray-500 mb-3 font-orbitron">
                           {t.instructor.projects}
                         </h5>
                         <div className="space-y-2">
@@ -143,10 +200,12 @@ export default function AboutInstructor() {
                               target="_blank"
                               rel="noopener noreferrer"
                               key={project.name}
-                              className="flex items-center gap-2 text-sm text-gray-300 hover:text-neonBlue transition-colors duration-200 font-body"
+                              className="flex items-center gap-2 text-sm text-gray-300 hover:text-white transition-colors duration-200 font-body group/link"
                             >
-                              <FaGithub />
-                              {project.name}
+                              <FaGithub className="text-gray-500 group-hover/link:text-white transition-colors" />
+                              <span className="border-b border-transparent group-hover/link:border-neonBlue transition-all">
+                                {project.name}
+                              </span>
                             </a>
                           ))}
                         </div>
