@@ -12,7 +12,6 @@ import {
   FaGithub,
   FaMapMarkerAlt,
   FaGlobe,
-  FaGraduationCap,
 } from "react-icons/fa";
 
 const getIconForTitle = (title: string) => {
@@ -42,6 +41,11 @@ export default function AboutInstructor() {
     setExpandedCardId(expandedCardId === id ? null : id);
   };
 
+  const cvFile =
+    language === "ka"
+      ? "/Mariam_Bukhaidze_CV_KA.pdf" 
+      : "/Mariam_Bukhaidze_CV.pdf";   
+
   return (
     <section
       id="about"
@@ -62,6 +66,7 @@ export default function AboutInstructor() {
       </div>
 
       <div className="max-w-4xl mx-auto text-center">
+        {/* PHOTO & BIO */}
         <div className="flex flex-col items-center justify-center mb-10">
           <div className="relative w-56 h-56 md:w-64 md:h-64 flex items-center justify-center">
             <div className="absolute inset-0 rounded-full animate-[spin_4s_linear_infinite] bg-[conic-gradient(from_0deg,#00F0FF,#BC13FE,#FF00AA,#00F0FF)] blur-md opacity-80"></div>
@@ -92,6 +97,26 @@ export default function AboutInstructor() {
           </p>
         </div>
 
+        {/* DOWNLOAD CV BUTTON */}
+        <div className="mt-8 flex justify-center gap-4">
+          <a
+            href={cvFile}
+            download
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button className="flex items-center gap-2 px-6 py-3 rounded-full border border-neonBlue text-neonBlue font-orbitron hover:bg-neonBlue hover:text-black transition-all duration-300 group">
+              <FaBriefcase className="group-hover:scale-110 transition-transform" />
+              {language === "ka"
+                ? "ჩამოტვირთე CV"
+                : language === "ru"
+                ? "Скачать резюме"
+                : "Download CV"}
+            </button>
+          </a>
+        </div>
+
+        {/* PROFESSIONAL EXPERIENCE */}
         <div className="my-16 relative">
           <h3 className="text-2xl md:text-3xl font-bold tracking-widest mb-12 font-orbitron text-white">
             {t.instructor.expTitle}
@@ -107,6 +132,7 @@ export default function AboutInstructor() {
                   index % 2 === 0 ? "md:flex-row-reverse" : ""
                 }`}
               >
+                {/* Timeline Dot */}
                 <div className="absolute left-4 md:left-1/2 w-4 h-4 bg-[#0A0A0F] border-2 border-neonBlue rounded-full -translate-x-1/2 mt-6 z-20 hidden md:block shadow-[0_0_10px_#00F0FF]"></div>
 
                 <div className="flex-1 hidden md:flex justify-start">
@@ -146,6 +172,7 @@ export default function AboutInstructor() {
                   )}
                 </div>
 
+                {/* Left Side: Experience Card */}
                 <div className="flex-1 w-full relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-neonBlue/20 to-neonPurple/20 rounded-xl blur-xl opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
