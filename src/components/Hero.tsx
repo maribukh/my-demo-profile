@@ -22,7 +22,7 @@ export default function Hero() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[500px] h-[300px] md:h-[500px] bg-neonBlue/10 rounded-full blur-[80px] -z-10 pointer-events-none"></div>
 
       <div className="max-w-4xl z-10 relative flex flex-col items-center">
-        <h1 className="text-3xl sm:text-4xl md:text-6xl font-bold tracking-widest text-white font-orbitron drop-shadow-[0_0_15px_rgba(0,240,255,0.3)] leading-tight mt-4">
+        <h1 className="text-3xl sm:text-4xl md:text-5xl font-bold tracking-widest text-white font-orbitron drop-shadow-[0_0_15px_rgba(0,240,255,0.3)] leading-tight mt-4">
           {t.hero.title}
         </h1>
 

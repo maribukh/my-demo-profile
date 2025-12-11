@@ -314,7 +314,7 @@ export const translations = {
       projects: "Проекты",
       status: {
         title: "Текущий статус",
-        available: "Открыта к предложениям",
+        available: "Доступна",
         openFor: "Рассматриваю:",
         types: "Полный день и Контракт",
         location: "Тбилиси, Грузия",
