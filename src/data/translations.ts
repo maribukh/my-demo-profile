@@ -78,6 +78,15 @@ export const translations = {
       skills: "Tech Stack",
       eduTitle: "Education & Certificates",
       projects: "Selected Projects",
+      status: {
+        title: "Current Status",
+        available: "Available",
+        openFor: "Open for",
+        types: "Full-time & Contract",
+        location: "Tbilisi, Georgia",
+        remote: "Relocation / Remote",
+        downloadCv: "Download CV",
+      },
     },
     footer: {
       title: "Let's Work Together",
@@ -186,6 +195,15 @@ export const translations = {
       skills: "ტექნოლოგიები",
       eduTitle: "განათლება",
       projects: "პროექტები",
+      status: {
+        title: "ამჟამინდელი სტატუსი",
+        available: "მზად ვარ მუშაობისთვის",
+        openFor: "განვიხილავ:",
+        types: "სრულ განაკვეთს & კონტრაქტს",
+        location: "თბილისი, საქართველო",
+        remote: "რელოკაცია / დისტანციური",
+        downloadCv: "CV-ს ჩამოტვირთვა",
+      },
     },
     footer: {
       title: "ვითანამშრომლოთ",
@@ -294,6 +312,15 @@ export const translations = {
       skills: "Навыки",
       eduTitle: "Образование",
       projects: "Проекты",
+      status: {
+        title: "Текущий статус",
+        available: "Открыта к предложениям",
+        openFor: "Рассматриваю:",
+        types: "Полный день и Контракт",
+        location: "Тбилиси, Грузия",
+        remote: "Релокация / Удаленка",
+        downloadCv: "Скачать резюме",
+      },
     },
     footer: {
       title: "Давайте сотрудничать",

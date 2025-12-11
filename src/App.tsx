@@ -10,6 +10,7 @@ import NotFound from "./pages/NotFound";
 import SEO from "./components/SEO";
 import ServicesList from "./components/ServicesList";
 import Portfolio from "./components/Portfolio";
+import CustomCursor from "./components/UI/CustomCursor";
 
 const LazyCourseFinder = lazy(() => import("./pages/CourseFinder"));
 const LazyCourseDetails = lazy(() => import("./pages/CourseDetails"));
@@ -75,8 +76,9 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#0A0A0F] text-white">
+    <div className="min-h-screen bg-[#0A0A0F] text-white md:cursor-none selection:bg-neonBlue selection:text-black">
       <ScrollToTop />
+      <CustomCursor />
       <Header />
       <main>
         <Suspense fallback={<PageLoadingFallback />}>
