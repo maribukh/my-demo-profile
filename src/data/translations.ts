@@ -60,6 +60,23 @@ export const translations = {
         },
       ],
     },
+    faq: {
+      title: "Common Questions",
+      items: [
+        {
+          q: "Do you take prepayment?",
+          a: "Yes, I work with a 50% prepayment to start the project. The remaining 50% is paid after the final approval.",
+        },
+        {
+          q: "Do you provide web design?",
+          a: "I specialize in Development. For small projects, I use modern UI kits. For complex custom designs, I can recommend a partner designer.",
+        },
+        {
+          q: "What happens if I find a bug later?",
+          a: "I provide 1 month of free technical support after launch to fix any bugs found in my code.",
+        },
+      ],
+    },
     courses: {
       title: "Mentorship Programs",
       findTitle: "Want to learn coding?",
@@ -224,6 +241,23 @@ export const translations = {
         },
       ],
     },
+    faq: {
+      title: "ხშირად დასმული კითხვები",
+      items: [
+        {
+          q: "როგორ ხდება გადახდა?",
+          a: "მუშაობას ვიწყებ 50% წინასწარი გადახდის შემდეგ. დარჩენილი 50% იფარება პროექტის ჩაბარებისას.",
+        },
+        {
+          q: "აკეთებთ თუ არა დიზაინს?",
+          a: "ჩემი პროფილი არის დეველოპმენტი. მცირე პროექტებისთვის ვიყენებ მზა UI კიტიებს. რთული დიზაინისთვის მყავს პარტნიორი დიზაინერი.",
+        },
+        {
+          q: "რა ხდება თუ ბაგს ვიპოვი?",
+          a: "პროექტის ჩაბარებიდან 1 თვის განმავლობაში გთავაზობთ უფასო ტექნიკურ მხარდაჭერას ხარვეზების გამოსასწორებლად.",
+        },
+      ],
+    },
     courses: {
       title: "მენტორინგი და სწავლება",
       findTitle: "გსურს პროგრამირების სწავლა?",
@@ -368,6 +402,23 @@ export const translations = {
         {
           title: "Запуск",
           desc: "Деплой на сервер, настройка SEO и передача проекта.",
+        },
+      ],
+    },
+    faq: {
+      title: "Частые вопросы",
+      items: [
+        {
+          q: "Нужна ли предоплата?",
+          a: "Да, я работаю с предоплатой 50% перед началом. Остальные 50% оплачиваются после сдачи проекта.",
+        },
+        {
+          q: "Делаете ли вы дизайн?",
+          a: "Я специализируюсь на разработке. Для небольших проектов использую готовые UI-киты. Для сложных — привлекаю дизайнера.",
+        },
+        {
+          q: "Что если найдутся баги?",
+          a: "Я предоставляю 1 месяц бесплатной техподдержки после запуска для исправления любых ошибок в коде.",
         },
       ],
     },

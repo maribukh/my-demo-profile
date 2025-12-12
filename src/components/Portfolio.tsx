@@ -111,7 +111,7 @@ export default function Portfolio() {
         github: "https://github.com/maribukh/desserts-order-app_btu",
         live: "https://desserts-order-app-btu.vercel.app/",
       },
-      stack: ["Angular", "Context API", "CSS Modules"],
+      stack: ["React", "Context API", "CSS Modules"],
       desc: {
         en: "Interactive food ordering app. I engineered the shopping cart logic (add/remove items), state management via Context API, and order summary calculations.",
         ka: "შეკვეთების აპლიკაცია. შევქმენი კალათის ლოგიკა (დამატება/წაშლა), მდგომარეობის მართვა Context API-თ და ღირებულების კალკულაცია.",
