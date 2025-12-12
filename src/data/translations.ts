@@ -38,6 +38,28 @@ export const translations = {
         },
       ],
     },
+    workflow: {
+      title: "How I Work",
+      subtitle: "Process",
+      steps: [
+        {
+          title: "Discovery",
+          desc: "We discuss requirements, goals, and technical specs to create a roadmap.",
+        },
+        {
+          title: "Development",
+          desc: "I build the architecture and UI using React & TypeScript with regular updates.",
+        },
+        {
+          title: "Testing",
+          desc: "Rigorous testing for bugs, responsiveness, and performance optimization.",
+        },
+        {
+          title: "Launch",
+          desc: "Deployment to production, SEO setup, and final handover.",
+        },
+      ],
+    },
     courses: {
       title: "Mentorship Programs",
       findTitle: "Want to learn coding?",
@@ -107,12 +129,37 @@ export const translations = {
     },
     modal: {
       order: "Request:",
-      desc: "Please describe your project briefly.",
+      desc: "Tell me about your project preferences.",
       labels: {
         name: "Your Name",
-        email: "Your Email",
-        details: "Project Details",
+        email: "Email Address",
+        details: "Additional Details",
+        company: "Company Name",
+        budget: "Estimated Budget",
+        time: "Timeline",
+        interests: "I'm interested in:",
       },
+      types: {
+        person: "Personal",
+        company: "Company",
+      },
+      placeholders: {
+        budget: "Select Range",
+        time: "Select Timeline",
+        details: "Any specific requirements or questions?",
+      },
+      options: {
+        budgets: ["< $500", "$500 - $1k", "$1k - $3k", "$3k+", "Not sure"],
+        times: ["ASAP (Urgent)", "1-2 Weeks", "1 Month", "Flexible"],
+      },
+      tags: [
+        "Landing Page",
+        "E-commerce",
+        "Web App",
+        "Admin Panel",
+        "API Integration",
+        "Consultation",
+      ],
       btnSend: "Send Request",
       success: "Request Sent!",
       successDesc: "I will contact you within 24 hours.",
@@ -152,6 +199,28 @@ export const translations = {
         {
           title: "დროული ჩაბარება",
           desc: "გარანტიას გაძლევთ პროექტის დროულად დასრულებაზე.",
+        },
+      ],
+    },
+    workflow: {
+      title: "სამუშაო პროცესი",
+      subtitle: "ეტაპები",
+      steps: [
+        {
+          title: "ანალიზი",
+          desc: "განვიხილავთ მოთხოვნებს და ვქმნით ტექნიკურ გეგმას.",
+        },
+        {
+          title: "დეველოპმენტი",
+          desc: "კოდის წერა, არქიტექტურის გამართვა და UI-ის აწყობა.",
+        },
+        {
+          title: "ტესტირება",
+          desc: "შემოწმება ხარვეზებზე, სისწრაფესა და ადაპტურობაზე.",
+        },
+        {
+          title: "გაშვება",
+          desc: "პროექტის ჰოსტინგზე განთავსება და ჩაბარება.",
         },
       ],
     },
@@ -233,6 +302,14 @@ export const translations = {
       btnSend: "გაგზავნა",
       success: "გაგზავნილია!",
       successDesc: "24 საათის განმავლობაში დაგიკავშირდებით.",
+      tags: [
+        "Lending Page",
+        "E-commerce",
+        "Web App",
+        "სადმინისტრაციო პანელი",
+        "API ინტეგრაცია",
+        "კონსულტაცია",
+      ],
     },
   },
   ru: {
@@ -269,6 +346,28 @@ export const translations = {
         {
           title: "Соблюдение сроков",
           desc: "Четкий процесс разработки гарантирует своевременную сдачу.",
+        },
+      ],
+    },
+    workflow: {
+      title: "Как я работаю",
+      subtitle: "Процесс",
+      steps: [
+        {
+          title: "Анализ",
+          desc: "Обсуждаем требования, цели и составляем техническое задание.",
+        },
+        {
+          title: "Разработка",
+          desc: "Пишу чистый код, настраиваю архитектуру и верстаю интерфейс.",
+        },
+        {
+          title: "Тестирование",
+          desc: "Проверка на баги, адаптивность и скорость загрузки.",
+        },
+        {
+          title: "Запуск",
+          desc: "Деплой на сервер, настройка SEO и передача проекта.",
         },
       ],
     },
@@ -314,7 +413,7 @@ export const translations = {
       projects: "Проекты",
       status: {
         title: "Текущий статус",
-        available: "Доступна",
+        available: "Открыта к предложениям",
         openFor: "Рассматриваю:",
         types: "Полный день и Контракт",
         location: "Тбилиси, Грузия",
@@ -346,6 +445,14 @@ export const translations = {
       btnSend: "Отправить",
       success: "Отправлено!",
       successDesc: "Я свяжусь с вами в течение 24 часов.",
+      tags: [
+        "Лендинг",
+        "E-commerce",
+        "Веб-приложение",
+        "Админ-панель",
+        "API Интеграция",
+        "Консультация",
+      ],
     },
   },
 };

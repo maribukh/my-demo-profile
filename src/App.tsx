@@ -11,6 +11,7 @@ import SEO from "./components/SEO";
 import ServicesList from "./components/ServicesList";
 import Portfolio from "./components/Portfolio";
 import CustomCursor from "./components/UI/CustomCursor";
+import Workflow from "./components/Workflow";
 
 const LazyCourseFinder = lazy(() => import("./pages/CourseFinder"));
 const LazyCourseDetails = lazy(() => import("./pages/CourseDetails"));
@@ -39,6 +40,7 @@ const MainPageLayout = () => (
     <Hero />
     <TechTicker />
     <ServicesList />
+    <Workflow />
     <Portfolio />
     <Suspense fallback={<SectionLoadingFallback />}>
       <LazyAboutInstructor />
