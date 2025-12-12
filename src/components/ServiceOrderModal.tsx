@@ -32,6 +32,34 @@ export default function ServiceOrderModal({
     }
   }, [isOpen, defaultMessage]);
 
+  const sendTelegramNotification = async (
+    clientName: string,
+    clientEmail: string,
+    service: string,
+    msg: string
+  ) => {
+    try {
+      const response = await fetch("/api/telegram", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          clientName,
+          clientEmail,
+          service,
+          msg,
+        }),
+      });
+
+      if (!response.ok) {
+        console.error("Failed to send notification via server");
+      }
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setStatus("loading");
@@ -47,7 +75,11 @@ export default function ServiceOrderModal({
       ]);
 
       if (error) throw error;
+
+      await sendTelegramNotification(name, email, serviceTitle, message);
+
       setStatus("success");
+
       setTimeout(() => {
         onClose();
         setName("");
