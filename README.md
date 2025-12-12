@@ -1,61 +1,53 @@
-# MB Dev Academy Platform
+# ⚡Professional Portfolio
 
-## Overview
+![React](https://img.shields.io/badge/React-19-20232A?style=flat-square&logo=react)
+![TypeScript](https://img.shields.io/badge/TypeScript-5.0-007ACC?style=flat-square&logo=typescript&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-Backend-3ECF8E?style=flat-square&logo=supabase&logoColor=white)
+![Vercel](https://img.shields.io/badge/Vercel-Deployed-000000?style=flat-square&logo=vercel&logoColor=white)
 
-This repository contains the source code for an educational platform interface ("MB Dev Academy"). The project demonstrates modern web development practices, focusing on component-based architecture, strict typing, and cloud backend integration.
+> A high-performance personal portfolio and service booking platform. Built with a modern tech stack to demonstrate advanced Front-End capabilities, architectural skills, and UI/UX sensitivity.
 
-**Live Deployment:** [https://edu-app-tsu.vercel.app](https://edu-app-tsu.vercel.app)
-
----
-
-## Architectural Status: Hybrid
-
-This application operates on a **hybrid architecture**:
-
-1.  **Content Delivery:** Course data and instructor profiles are currently served via static local data structures to ensure instant rendering performance for demonstration purposes.
-2.  **Data Persistence (Backend):** User registration and form submissions are integrated with a live **Supabase (PostgreSQL)** database.
-
-**Note:** This is a production-ready demonstration. The application requires valid API credentials to function correctly.
+🔴 **Live Demo:** [https://my-demo-profile.vercel.app](https://my-demo-profile.vercel.app)
 
 ---
 
-## Technology Stack
+## 🌟 Key Features
 
-The project utilizes a strictly typed, modern stack:
+This isn't just a static landing page. It's a full-featured web application:
 
-*   **Frontend Core:** React 18
-*   **Language:** TypeScript
-*   **Build System:** Vite
-*   **Styling:** Tailwind CSS
-*   **Backend / Database:** Supabase (PostgreSQL)
-*   **Integration:** REST API via Supabase Client
-
-## Key Features
-
-*   **Fullstack Integration:** Functional registration forms connected to a cloud database.
-*   **Responsive Architecture:** Adaptive layout for Mobile, Tablet, and Desktop environments.
-*   **Type Safety:** Strict TypeScript configuration (`tsconfig.strict`) to minimize runtime errors.
-*   **Security Markers:** Implemented digital watermarking and console signatures for authorship verification.
-*   **Performance:** optimized lazy loading for heavy route components.
+*   **🌍 Internationalization (i18n):** Full support for English, Georgian, and Russian languages via Context API.
+*   **🤖 Smart Notifications:** Integrated **Telegram Bot** via Vercel Serverless Functions to receive client orders instantly.
+*   **💾 Database Integration:** All orders and subscriptions are stored in **Supabase (PostgreSQL)** for reliability.
+*   **🎨 Cyberpunk UI:** Custom design with neon glassmorphism, Framer Motion animations, and a custom interactive cursor.
+*   **📱 Mobile First:** Fully responsive layout with a custom side-drawer menu for mobile devices.
+*   **⚡ Performance:** Optimized with Vite, WebP assets, and React code-splitting.
 
 ---
 
-## Intellectual Property & License
+## 🛠️ Tech Stack
 
-**STRICT PROPRIETARY LICENSE**
-
-**Copyright © 2025 Mariam Bukhaidze. All Rights Reserved.**
-
-This source code is the intellectual property of the author. It is published for **portfolio demonstration purposes only**.
-
-1.  **Prohibited:** Commercial use, modification, redistribution, or sublicensing of this software.
-2.  **Prohibited:** Copying code snippets for use in personal portfolios without explicit attribution.
-3.  **Allowed:** Viewing and studying the code for educational evaluation.
-
-Any unauthorized reproduction of this work will be considered a violation of copyright law.
+| Category | Technology |
+| :--- | :--- |
+| **Frontend** | React 19, TypeScript, Tailwind CSS, Framer Motion |
+| **Backend (BaaS)** | Supabase (PostgreSQL), Vercel Serverless Functions (API) |
+| **State Management** | React Context API |
+| **Forms & Alerts** | Custom Hooks, Telegram API |
+| **Deployment** | Vercel (CI/CD) |
 
 ---
 
-## Installation and Setup
+## 📂 Project Structure
 
-Since this project connects to a private database, it requires environment variables to run locally.
+```text
+src/
+├── api/             # Serverless functions (Telegram bot logic)
+├── assets/          # Optimized images and mocks
+├── components/      # Reusable UI components (Modals, Buttons, Cards)
+├── context/         # Global state (Language Context)
+├── data/            # Static data and Translations (en/ka/ru)
+├── pages/           # Route pages (Home, Terms, 404)
+└── main.tsx         # App entry point with Providers
+
+```
+
+**© 2025 Mariam Bukhaidze. All Rights Reserved.**
