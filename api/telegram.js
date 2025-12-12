@@ -9,13 +9,14 @@ export default async function handler(req, res) {
   const chatId = process.env.TELEGRAM_CHAT_ID;
 
   if (!token || !chatId) {
-    return res.status(500).json({ error: "Missing server configuration" });
+    console.error("Missing Telegram Env Vars");
+    return res.status(500).json({ error: "Server configuration error" });
   }
 
   const text = `
-🚀 New Service Order!
+🚀 NEW ORDER!
 
-👤 Client: ${clientName}
+👤 Name: ${clientName}
 📧 Email: ${clientEmail}
 🛠 Service: ${service}
 📝 Message:
@@ -38,11 +39,13 @@ ${msg}
     const data = await telegramResponse.json();
 
     if (!telegramResponse.ok) {
+      console.error("Telegram API Error:", data);
       return res.status(400).json({ error: data });
     }
 
     return res.status(200).json({ success: true });
   } catch (error) {
+    console.error("Fetch Error:", error);
     return res.status(500).json({ error: "Internal Server Error" });
   }
 }
