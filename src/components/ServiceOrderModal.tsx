@@ -12,6 +12,7 @@ import {
   FaPaperPlane,
 } from "react-icons/fa";
 import { useLanguage } from "../context/LanguageContext";
+import { Link } from "react-router-dom";
 
 interface Props {
   isOpen: boolean;
@@ -33,11 +34,10 @@ export default function ServiceOrderModal({
   const [companyName, setCompanyName] = useState("");
   const [email, setEmail] = useState("");
   const [additionalDetails, setAdditionalDetails] = useState("");
-
-  // Selection Fields
   const [selectedTags, setSelectedTags] = useState<string[]>([]);
   const [budget, setBudget] = useState("");
   const [timeline, setTimeline] = useState("");
+  const [agreed, setAgreed] = useState(false);
 
   const [status, setStatus] = useState<
     "idle" | "loading" | "success" | "error"
@@ -54,7 +54,7 @@ export default function ServiceOrderModal({
       setSelectedTags([]);
       setBudget("");
       setTimeline("");
-      // Не сбрасываем имя/email если пользователь открывает форму повторно, это удобно
+      setAgreed(false);
     }
   }, [isOpen, defaultMessage]);
 
@@ -68,7 +68,9 @@ export default function ServiceOrderModal({
     try {
       const response = await fetch("/api/telegram", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify({
           clientName: name,
           clientEmail: email,
@@ -76,7 +78,10 @@ export default function ServiceOrderModal({
           msg: finalMsg,
         }),
       });
-      if (!response.ok) console.error("Failed to send notification via server");
+
+      if (!response.ok) {
+        console.error("Failed to send notification via server");
+      }
     } catch (error) {
       console.error(error);
     }
@@ -84,6 +89,7 @@ export default function ServiceOrderModal({
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+    if (!agreed) return;
     setStatus("loading");
 
     const fullMessageForDB = `
@@ -111,10 +117,12 @@ export default function ServiceOrderModal({
       await sendTelegramNotification(fullMessageForDB);
 
       setStatus("success");
+
       setTimeout(() => {
         onClose();
-        setAdditionalDetails("");
-        setSelectedTags([]);
+        setName("");
+        setEmail("");
+        setCompanyName("");
       }, 2500);
     } catch (error) {
       console.error(error);
@@ -127,7 +135,6 @@ export default function ServiceOrderModal({
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-black/90 backdrop-blur-md animate-fade-in overflow-y-auto">
       <div className="relative w-full max-w-2xl bg-[#0A0A0F] border border-white/10 rounded-2xl shadow-[0_0_50px_rgba(0,240,255,0.1)] my-auto overflow-hidden">
-        {/* Хедер модалки */}
         <div className="bg-white/5 border-b border-white/10 p-6 flex justify-between items-start">
           <div>
             <h2 className="text-xl md:text-2xl font-bold text-white font-orbitron">
@@ -157,7 +164,6 @@ export default function ServiceOrderModal({
             </div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-8">
-              {/* 1. ТИП КЛИЕНТА (Большие карточки) */}
               <div className="grid grid-cols-2 gap-4">
                 <button
                   type="button"
@@ -203,7 +209,6 @@ export default function ServiceOrderModal({
                 </button>
               </div>
 
-              {/* 2. КОНТАКТНЫЕ ДАННЫЕ */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div className="space-y-1.5">
                   <label className="text-xs font-bold text-gray-500 uppercase tracking-wider font-orbitron">
@@ -249,9 +254,7 @@ export default function ServiceOrderModal({
                 )}
               </div>
 
-              {/* 3. БЮДЖЕТ И СРОКИ (Сетка кнопок вместо селектов) */}
               <div className="grid grid-cols-1 gap-6">
-                {/* Budget Selection */}
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase tracking-wider font-orbitron">
                     <FaMoneyBillWave className="text-green-400" />{" "}
@@ -275,7 +278,6 @@ export default function ServiceOrderModal({
                   </div>
                 </div>
 
-                {/* Timeline Selection */}
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-xs font-bold text-gray-500 uppercase tracking-wider font-orbitron">
                     <FaClock className="text-neonPurple" />{" "}
@@ -300,7 +302,6 @@ export default function ServiceOrderModal({
                 </div>
               </div>
 
-              {/* 4. ТЕГИ (ИНТЕРЕСЫ) */}
               <div className="space-y-2">
                 <label className="text-xs font-bold text-gray-500 uppercase tracking-wider font-orbitron">
                   {t.modal.labels.interests}
@@ -323,7 +324,6 @@ export default function ServiceOrderModal({
                 </div>
               </div>
 
-              {/* 5. СООБЩЕНИЕ */}
               <div className="space-y-1.5">
                 <label className="text-xs font-bold text-gray-500 uppercase tracking-wider font-orbitron">
                   {t.modal.labels.details}
@@ -337,19 +337,45 @@ export default function ServiceOrderModal({
                 />
               </div>
 
-              {/* ОШИБКИ */}
+              <div className="flex items-start justify-center gap-3 p-3 rounded-lg bg-white/5 border border-white/5">
+                <input
+                  type="checkbox"
+                  id="terms"
+                  checked={agreed}
+                  onChange={(e) => setAgreed(e.target.checked)}
+                  className="mt-1 w-4 h-4 rounded border-gray-600 text-neonBlue focus:ring-neonBlue bg-black/50 cursor-pointer"
+                />
+                <label
+                  htmlFor="terms"
+                  className="text-xs text-gray-400 font-body cursor-pointer"
+                >
+                  I agree to the{" "}
+                  <Link
+                    to="/terms"
+                    target="_blank"
+                    className="text-neonBlue hover:underline"
+                  >
+                    Terms & Conditions
+                  </Link>
+                  . I understand that a 50% prepayment is required to start.
+                </label>
+              </div>
+
               {status === "error" && (
                 <p className="text-red-400 text-sm font-body text-center bg-red-500/10 p-2 rounded">
                   Something went wrong. Please try again.
                 </p>
               )}
 
-              {/* КНОПКА ОТПРАВКИ */}
               <Button
                 type="submit"
                 variant="primary"
-                className="w-full py-4 text-lg shadow-lg shadow-neonBlue/20 flex justify-center items-center gap-2"
-                disabled={status === "loading"}
+                className={`w-full py-4 text-lg shadow-lg flex justify-center items-center gap-2 ${
+                  agreed
+                    ? "shadow-neonBlue/20"
+                    : "opacity-50 cursor-not-allowed"
+                }`}
+                disabled={status === "loading" || !agreed}
               >
                 {status === "loading" ? (
                   <>

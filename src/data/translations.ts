@@ -181,6 +181,43 @@ export const translations = {
       success: "Request Sent!",
       successDesc: "I will contact you within 24 hours.",
     },
+    terms: {
+      title: "Terms &",
+      subtitle: "Conditions",
+      general: {
+        title: "1. General Overview",
+        content:
+          "By working with Mariam Bukhaidze ('Developer'), you ('Client') agree to the following terms. These terms serve as a service agreement for all web development and consultation services.",
+      },
+      payments: {
+        title: "2. Payments",
+        list: [
+          "Prepayment: A 50% non-refundable deposit is required to start the project.",
+          "Final Payment: The remaining 50% is due upon project completion, before the final source code transfer or deployment.",
+          "Hourly Work: Consultations are paid 100% in advance.",
+        ],
+      },
+      revisions: {
+        title: "3. Revisions",
+        content:
+          "The fixed price includes 2 rounds of revisions. Any additional changes requested by the Client after these rounds, or changes that contradict the initial brief, will be charged at an hourly rate.",
+      },
+      ip: {
+        title: "4. Intellectual Property",
+        content:
+          "Upon full payment, the Client receives full ownership rights to the final source code and design. The Developer retains the right to display the project in their personal portfolio.",
+      },
+      deadlines: {
+        title: "5. Deadlines",
+        content:
+          "Deadlines are estimates. The Developer is not responsible for delays caused by the Client (e.g., late feedback, missing content, or change of requirements).",
+      },
+      warranty: {
+        title: "6. Warranty",
+        content:
+          "I provide a 30-day warranty period after launch. During this time, any bugs related to my code will be fixed for free. This does not cover issues caused by third-party services.",
+      },
+    },
   },
   ka: {
     nav: {
@@ -332,10 +369,30 @@ export const translations = {
         name: "სახელი",
         email: "ელ.ფოსტა",
         details: "პროექტის დეტალები",
+        company: "კომპანია",
+        budget: "ბიუჯეტი",
+        time: "ვადები",
+        interests: "მაინტერესებს:",
       },
-      btnSend: "გაგზავნა",
-      success: "გაგზავნილია!",
-      successDesc: "24 საათის განმავლობაში დაგიკავშირდებით.",
+      types: {
+        person: "პერსონალური",
+        company: "კომპანია",
+      },
+      placeholders: {
+        budget: "აირჩიეთ ბიუჯეტი",
+        time: "აირჩიეთ ვადები",
+        details: "ნებისმიერი სპეციფიკური მოთხოვნა...",
+      },
+      options: {
+        budgets: [
+          "< 500₾",
+          "500₾ - 1000₾",
+          "1000₾ - 3000₾",
+          "3000₾+",
+          "არ ვიცი",
+        ],
+        times: ["სასწრაფოდ", "1-2 კვირა", "1 თვე", "მოქნილი"],
+      },
       tags: [
         "Lending Page",
         "E-commerce",
@@ -344,6 +401,46 @@ export const translations = {
         "API ინტეგრაცია",
         "კონსულტაცია",
       ],
+      btnSend: "გაგზავნა",
+      success: "გაგზავნილია!",
+      successDesc: "24 საათის განმავლობაში დაგიკავშირდებით.",
+    },
+    terms: {
+      title: "წესები და",
+      subtitle: "პირობები",
+      general: {
+        title: "1. ზოგადი მიმოხილვა",
+        content:
+          "მარიამ ბუხაიძესთან ('დეველოპერი') მუშაობისას, თქვენ ('კლიენტი') ეთანხმებით შემდეგ პირობებს. ეს პირობები წარმოადგენს მომსახურების ხელშეკრულებას.",
+      },
+      payments: {
+        title: "2. გადახდა",
+        list: [
+          "წინასწარი გადახდა: პროექტის დასაწყებად საჭიროა 50% ავანსი, რომელიც არ ბრუნდება.",
+          "საბოლოო გადახდა: დარჩენილი 50% იფარება პროექტის დასრულებისას, კოდის გადაცემამდე.",
+          "საათობრივი სამუშაო: კონსულტაციები ანაზღაურდება 100% წინასწარ.",
+        ],
+      },
+      revisions: {
+        title: "3. შესწორებები",
+        content:
+          "ფიქსირებული ფასი მოიცავს შესწორებების 2 რაუნდს. ნებისმიერი დამატებითი ცვლილება, რომელიც სცდება თავდაპირველ შეთანხმებას, ანაზღაურდება საათობრივად.",
+      },
+      ip: {
+        title: "4. ინტელექტუალური საკუთრება",
+        content:
+          "სრული გადახდის შემდეგ, კლიენტი იღებს სრულ უფლებას კოდსა და დიზაინზე. დეველოპერს უფლება აქვს გამოიყენოს პროექტი პორტფოლიოში.",
+      },
+      deadlines: {
+        title: "5. ვადები",
+        content:
+          "ვადები არის სავარაუდო. დეველოპერი არ არის პასუხისმგებელი კლიენტის მიერ გამოწვეულ შეფერხებებზე (მასალების დაგვიანება, პასუხის დაგვიანება).",
+      },
+      warranty: {
+        title: "6. გარანტია",
+        content:
+          "პროექტის ჩაბარებიდან 30 დღის განმავლობაში, კოდთან დაკავშირებული ნებისმიერი ხარვეზი გასწორდება უფასოდ. ეს არ ეხება მესამე მხარის სერვისებს.",
+      },
     },
   },
   ru: {
@@ -492,10 +589,28 @@ export const translations = {
     modal: {
       order: "Заявка:",
       desc: "Опишите задачу, и я свяжусь с вами.",
-      labels: { name: "Имя", email: "Email", details: "Детали проекта" },
-      btnSend: "Отправить",
-      success: "Отправлено!",
-      successDesc: "Я свяжусь с вами в течение 24 часов.",
+      labels: {
+        name: "Имя",
+        email: "Email",
+        details: "Детали проекта",
+        company: "Компания",
+        budget: "Бюджет",
+        time: "Сроки",
+        interests: "Меня интересует:",
+      },
+      types: {
+        person: "Личный",
+        company: "Компания",
+      },
+      placeholders: {
+        budget: "Выберите бюджет",
+        time: "Выберите сроки",
+        details: "Любые требования или вопросы...",
+      },
+      options: {
+        budgets: ["< $500", "$500 - $1k", "$1k - $3k", "$3k+", "Не знаю"],
+        times: ["Срочно", "1-2 Недели", "1 Месяц", "Гибко"],
+      },
       tags: [
         "Лендинг",
         "E-commerce",
@@ -504,6 +619,46 @@ export const translations = {
         "API Интеграция",
         "Консультация",
       ],
+      btnSend: "Отправить",
+      success: "Отправлено!",
+      successDesc: "Я свяжусь с вами в течение 24 часов.",
+    },
+    terms: {
+      title: "Условия",
+      subtitle: "работы",
+      general: {
+        title: "1. Общие положения",
+        content:
+          "Начиная работу с Мариам Бухаидзе ('Разработчик'), вы ('Клиент') соглашаетесь с нижеследующими условиями.",
+      },
+      payments: {
+        title: "2. Оплата",
+        list: [
+          "Предоплата: Для начала работы требуется невозвратный депозит 50%.",
+          "Финальный расчет: Оставшиеся 50% оплачиваются после завершения проекта, перед передачей исходного кода.",
+          "Почасовая работа: Консультации оплачиваются 100% вперед.",
+        ],
+      },
+      revisions: {
+        title: "3. Правки",
+        content:
+          "Фиксированная цена включает 2 итерации правок. Любые дополнительные изменения или изменения, противоречащие изначальному ТЗ, оплачиваются почасово.",
+      },
+      ip: {
+        title: "4. Интеллектуальная собственность",
+        content:
+          "После полной оплаты Клиент получает полные права на исходный код и дизайн. Разработчик оставляет за собой право демонстрировать проект в портфолио.",
+      },
+      deadlines: {
+        title: "5. Сроки",
+        content:
+          "Сроки являются оценочными. Разработчик не несет ответственности за задержки, вызванные Клиентом (долгое согласование, отсутствие материалов).",
+      },
+      warranty: {
+        title: "6. Гарантия",
+        content:
+          "Я предоставляю 30 дней гарантии после запуска. В этот период любые баги в моем коде исправляются бесплатно.",
+      },
     },
   },
 };

@@ -12,7 +12,8 @@ import ServicesList from "./components/ServicesList";
 import Portfolio from "./components/Portfolio";
 import CustomCursor from "./components/UI/CustomCursor";
 import Workflow from "./components/Workflow";
-import FAQ from "./components/FAQ"; // Импорт FAQ
+import FAQ from "./components/FAQ";
+import Terms from "./pages/Terms";
 
 const LazyCourseFinder = lazy(() => import("./pages/CourseFinder"));
 const LazyCourseDetails = lazy(() => import("./pages/CourseDetails"));
@@ -46,7 +47,6 @@ const MainPageLayout = () => (
     <Suspense fallback={<SectionLoadingFallback />}>
       <LazyAboutInstructor />
     </Suspense>
-    {/* Добавили FAQ перед Features */}
     <FAQ />
     <Features />
   </>
@@ -91,6 +91,7 @@ function App() {
             <Route path="/" element={<MainPageLayout />} />
             <Route path="/course/:id" element={<LazyCourseDetails />} />
             <Route path="/course-finder" element={<LazyCourseFinder />} />
+            <Route path="/terms" element={<Terms />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </Suspense>

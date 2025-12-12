@@ -4,6 +4,7 @@ import { useLanguage } from "../context/LanguageContext";
 import { FaGithub, FaEnvelope, FaSpinner, FaCheck } from "react-icons/fa";
 import { supabase } from "../supabaseClient";
 import Button from "./UI/Button";
+import { Link } from "react-router-dom";
 
 export default function Footer() {
   const { language, t } = useLanguage();
@@ -110,9 +111,17 @@ export default function Footer() {
 
       <div className="relative z-10 container mx-auto px-4 py-8 border-t border-white/10">
         <div className="flex flex-col sm:flex-row justify-between items-center gap-6">
-          <p className="text-sm text-neutral-400 text-center sm:text-left font-body">
-            © {new Date().getFullYear()} {t.footer.copyright}
-          </p>
+          <div className="text-center sm:text-left">
+            <p className="text-sm text-neutral-400 font-body">
+              © {new Date().getFullYear()} {t.footer.copyright}
+            </p>
+            <Link
+              to="/terms"
+              className="text-xs text-neutral-600 hover:text-neonBlue transition-colors mt-1 block"
+            >
+              Terms & Conditions
+            </Link>
+          </div>
 
           <nav className="flex gap-6">
             {navLinks.map((link) => (
