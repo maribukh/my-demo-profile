@@ -13,7 +13,6 @@ import {
   FaMapMarkerAlt,
   FaClock,
   FaFileDownload,
-  FaGlobe,
 } from 'react-icons/fa';
 
 const getIconForId = (id: number) => {
@@ -36,7 +35,7 @@ export default function AboutInstructor() {
       hour: '2-digit',
       minute: '2-digit',
       hour12: false,
-    })
+    }),
   );
 
   useEffect(() => {
@@ -46,7 +45,7 @@ export default function AboutInstructor() {
           hour: '2-digit',
           minute: '2-digit',
           hour12: false,
-        })
+        }),
       );
     }, 60000);
     return () => clearInterval(timer);
